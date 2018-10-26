@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Montreal iBUS explorer</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css">
+    <script type="text/javascript" src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-info">
+        <span class="navbar-brand mb-0 h1">Montréal iBUS explorer</span>
+    </nav>
+    <div class="container-fluid">
+        <br>
+        <h2>Welcome to the iBus explorer!</h2>
+        <h4>Please choose a line.</h4>
+        <form action="javascript:console.log('form submitted');" id="lineChooser" class="">
+          <div class="row" style="margin-bottom: 10px;">
+            <div class="col">
+                <label for="inputLine">Line number</label>
+                <input type="text" class="form-control" id="inputLine" value="205" style="height:calc(2.4375rem + 2px);">
+            </div>
+            <div class="col">
+                <label for="inputDir">Direction</label>
+                <select class="form-control" id="inputDir">
+                    <option value="E">East</option>
+                    <option value="W">West</option>
+                    <option value="N">North</option>
+                    <option value="S">South</option>
+                </select>
+            </div>
+            </div>
+            <button type="submit" class="btn btn-raised btn-success">Submit</button>
+            <button id="refresh_btn" type="button" class="btn btn-secondary bmd-btn-icon float-right"><i class="material-icons">refresh</i></button>
+        </form>
+        <br>
+        <!--
+    <table class="table">
+    <thead class="thead-dark">
+    <tr>
+    <th scope="col">Vehicle reference</th>
+    <th scope="col">Recorded at</th>
+    <th scope="col">Index trace</th>
+    <th scope="col">Is at stop</th>
+    <th scope="col">Is cancelled</th>
+    <th scope="col">Is in congestion</th>
+    <th scope="col">Is last</th>
+    <th scope="col">Is planified</th>
+    <th scope="col">Is ramp cancelled</th>
+    <th scope="col">Is real</th>
+    <th scope="col">Journey reference</th>
+    <th scope="col">Last stop</th>
+    <th scope="col">Line index</th>
+    <th scope="col">Next stop</th>
+    <th scope="col">Next stop is accessible</th>
+    <th scope="col">Aimed arrival</th>
+    <th scope="col">Aimed departure</th>
+    <th scope="col">Second next stop</th>
+    <th scope="col">Second stop aimed arrival</th>
+    <th scope="col">Second stop departure arrival</th>
+    <th scope="col">Time</th>
+    <th scope="col">Trace</th>
+    <th scope="col">Vehicle at stop</th>
+    <th scope="col">Vehicle is accessible</th>
+    <th scope="col">Vehicle position</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <th scope="row">vehicle_ref</th>
+    <th>recorded_at_time</th>
+    <th>index_trace</th>
+    <th>is_at_stop</th>
+    <th>is_cancelled</th>
+    <th>is_congestion</th>
+    <th>is_last</th>
+    <th>is_planified</th>
+    <th>is_ramp_cancelled</th>
+    <th>is_real</th>
+    <th>journeyRef</th>
+    <th>last_stop</th>
+    <th>line_index</th>
+    <th>next_stop stop_name</th>
+    <th>stop_is_accessible</th>
+    <th>aimed_arrival_time</th>
+    <th>aimed_departure_time</th>
+    <th>second_next_stop</th>
+    <th>second_aimed_arrival_time</th>
+    <th>second_aimed_departure_time</th>
+    <th>time</th>
+    <th>trace</th>
+    <th>vehicle_at_stop</th>
+    <th>vehicle_is_accessible</th>
+    <th>vehicle_lat, vehicle_lon</th>
+    </tr>
+    </tbody>
+    </table>-->
+        <div id='map' style='width: 100%; height: 500px;'></div>
+
+        <div class="alert alert-warning" role="alert">
+          Please use this website responsibly. <b>Please wait at least <u>30 seconds</u></b> between each request. This website is not affiliated with the STM - Société de transport de Montréal or any other transportation agency.
+        </div>
+
+        <script src="https://cdn.rawgit.com/FezVrasta/snackbarjs/1.1.0/dist/snackbar.min.js"></script>
+        <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+        <script>
+        $('body').bootstrapMaterialDesign();
+        </script>
+    </div>
+
+    <script type="text/javascript">
+        // préparation de la page
+
+        var baseUrl = "https://demo8136770.mockable.io/pub/i3/v1c/api/en/";
+
+        // préparation de la carte
+
+        var mymap = L.map('map').setView([45.5576, -73.7242], 10);
+
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox.streets',
+            accessToken: 'pk.eyJ1IjoiZmVsaXhpbngiLCJhIjoiY2lqYzJoMW9vMDA1dnZsa3F3cmZzcWVsciJ9.ZWBQm52vI7RFRwGuoAzwMg'
+        }).addTo(mymap);
+
+        var posLayer = L.layerGroup().addTo(mymap);
+        var transitLayer = L.layerGroup().addTo(mymap);
+
+        // autres transports
+
+        $(document).ready(function(){
+          $.get("geojson/stm1.geojson", function(data){L.geoJSON(JSON.parse(data), {style: function(feature) {return {color: '#00a54f'};}}).addTo(transitLayer); });
+          $.get("geojson/stm2.geojson", function(data){L.geoJSON(JSON.parse(data), {style: function(feature) {return {color: '#f58220'};}}).addTo(transitLayer); });
+          $.get("geojson/stm4.geojson", function(data){L.geoJSON(JSON.parse(data), {style: function(feature) {return {color: '#ffdc01'};}}).addTo(transitLayer); });
+          $.get("geojson/stm5.geojson", function(data){L.geoJSON(JSON.parse(data), {style: function(feature) {return {color: '#0072bc'};}}).addTo(transitLayer); });
+          $.get("geojson/exo1.geojson", function(data){L.geoJSON(JSON.parse(data), {style: function(feature) {return {color: '#f76179'};}}).addTo(transitLayer); });
+          $.get("geojson/exo2.geojson", function(data){L.geoJSON(JSON.parse(data), {style: function(feature) {return {color: '#a4cb92'};}}).addTo(transitLayer); });
+          $.get("geojson/exo3.geojson", function(data){L.geoJSON(JSON.parse(data), {style: function(feature) {return {color: '#989ec3'};}}).addTo(transitLayer); });
+          $.get("geojson/exo4.geojson", function(data){L.geoJSON(JSON.parse(data), {style: function(feature) {return {color: '#4fb7b4'};}}).addTo(transitLayer); });
+          $.get("geojson/exo5.geojson", function(data){L.geoJSON(JSON.parse(data), {style: function(feature) {return {color: '#cf5a94'};}}).addTo(transitLayer); });
+          $.get("geojson/exo6.geojson", function(data){L.geoJSON(JSON.parse(data), {style: function(feature) {return {color: '#f2a69a'};}}).addTo(transitLayer); });
+        });
+
+        //icones
+
+        var busIcon = L.icon({
+            iconUrl: 'http://www.stm.info/sites/all/themes/stm/img/bus-position-icon.png',
+            iconSize: [20, 20]
+        });
+
+        var stopIcon = L.icon({
+            iconUrl: 'https://i.imgur.com/d5H0xrr.png',
+            iconSize: [10, 10]
+        });
+
+        //TODO GET request
+        $("#lineChooser").submit(function(event) {
+            var lineId = $("#inputLine").val();
+            var lineDir = $("#inputDir").val();
+            console.log(lineId + " " + lineDir);
+            var stops_url = baseUrl + "lines/" + lineId + "/stops?direction=" + lineDir + "&withconnection=0";
+            var geo_url = baseUrl + "lines/" + lineId + "/routes/default?direction=" + lineDir;
+            var pos_url = baseUrl + "lines/" + lineId + "/positions/?direction=" + lineDir + "&weelchair=0";
+            // ARRÊTS DE LA LIGNE
+            $.get(stops_url, function(data, stop_status) {
+                console.log("stops call result: " + stop_status);
+                console.log("api stops status: " + data.status.level);
+                // vérifie si le status n'est pas ok
+                if (data.status.level!="OK") {
+                  var snack_options =  {
+                      content: "There was an error with your request. Please check your line number and direction.",
+                      timeout: 1000
+                  }
+                  $.snackbar(snack_options);
+                  console.log(data.status);
+                }
+                //let stops = JSON.parse(data);
+                data.result.forEach(function(element) {
+                    L.marker(L.latLng(element.lat, element.lon), {
+                        icon: stopIcon
+                    }).addTo(mymap).bindPopup("<b>" + element.identifier + "</b> " + element.description);
+                });
+            });
+            // GÉOGRAPHIE DES LIGNES
+            $.get(geo_url, function(data, geo_status) {
+                console.log("geo call result: " + geo_status);
+                //let geo = JSON.parse(data);
+                let line_latlngs = data.Geometry;
+                let line_polyline = L.polyline(line_latlngs, {
+                    color: '#009fdb'
+                }).addTo(mymap);
+                mymap.fitBounds(line_polyline.getBounds());
+            });
+            // POSITIONS DES BUS
+            $.get(pos_url, function(data, pos_status) {
+                console.log("pos call result: " + pos_status);
+                console.log("api pos status: " + data.status.level);
+                //let pos = JSON.parse(data);
+                let line_id = data.line.public_identifier;
+                let line_desc = data.line.description;
+                let line_dir = data.line.direction_name;
+                let line = line_id + " " + line_desc + " " + line_dir;
+
+                data.result.forEach(function(element) {
+                    L.marker(L.latLng(element.vehicle_lat, element.vehicle_lon), {
+                            icon: busIcon
+                        }).addTo(posLayer)
+                        .bindPopup("<h3>" + line + " - " + element.journeyRef + "</h3><b>Next stop: </b> " + element.next_stop + " " + element.stop_name + "<br><b>Vehicle number: </b>" + element.vehicle_ref);
+                });
+            });
+        });
+
+        $("#refresh_btn").click(function() {
+            posLayer.clearLayers();
+            var lineId = $("#inputLine").val();
+            var lineDir = $("#inputDir").val();
+            var pos_url = baseUrl + "lines/" + lineId + "/positions/?direction=" + lineDir + "&weelchair=0";
+            $.get(pos_url, function(data, pos_status) {
+                console.log("pos sult: " + pos_status);
+                //let pos = JSON.parse(data);
+                let line_id = data.line.public_identifier;
+                let line_desc = data.line.description;
+                let line_dir = data.line.direction_name;
+                let line = line_id + " " + line_desc + " " + line_dir;
+
+                data.result.forEach(function(element) {
+                    L.marker(L.latLng(element.vehicle_lat, element.vehicle_lon), {
+                            icon: busIcon
+                        }).addTo(posLayer)
+                        .bindPopup("<h3>" + line + " - " + element.journeyRef + "</h3><b>Next stop: </b> " + element.next_stop + " " + element.stop_name + "<br><b>Vehicle number: </b>" + element.vehicle_ref);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
