@@ -1,0 +1,14 @@
+{
+  "lang": "EN",
+  "title": "Explorateur iBUS pour Montréal",
+  "headline": "Bienvenue dans l'explorateur iBUS!",
+  "subheadline": "Veuillez choisir une ligne et une direction.",
+  "line_number": "Numéro de la ligne",
+  "direction": "Direction",
+  "east": "Est",
+  "west": "Ouest",
+  "north": "North",
+  "south": "Sud",
+  "submit": "Envoyer",
+  "alert": "Veuillez utiliser ce site web de manière responsable. Veuillez patienter au moins 30 secondes entre chaque demande. Ce site Web n'est pas affilié à la STM (Société de transport de Montréal) ni à aucun autre organisme de transport.",
+}

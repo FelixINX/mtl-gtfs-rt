@@ -11,33 +11,34 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
     <script type="text/javascript" src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
+    <script type="text/javascript" src="jquery.localize.js"></script>
 </head>
 
 <body>
     <nav class="navbar navbar-dark bg-info">
-        <span class="navbar-brand mb-0 h1">Montréal iBUS explorer</span>
+        <span class="navbar-brand mb-0 h1" data-localize="title">Montréal iBUS explorer</span>
     </nav>
     <div class="container-fluid">
         <br>
-        <h2>Welcome to the iBus explorer!</h2>
-        <h4>Please choose a line.</h4>
+        <h2 data-localize="headline">Welcome to the iBus explorer!</h2>
+        <h4 data-localize="subheadline">Please choose a line and a direction.</h4>
         <form action="javascript:console.log('form submitted');" id="lineChooser" class="">
           <div class="row" style="margin-bottom: 10px;">
             <div class="col">
-                <label for="inputLine">Line number</label>
+                <label for="inputLine" data-localize="line_number">Line number</label>
                 <input type="text" class="form-control" id="inputLine" value="205" style="height:calc(2.4375rem + 2px);">
             </div>
             <div class="col">
-                <label for="inputDir">Direction</label>
+                <label for="inputDir" data-localize="direction">Direction</label>
                 <select class="form-control" id="inputDir">
-                    <option value="E">East</option>
-                    <option value="W">West</option>
-                    <option value="N">North</option>
-                    <option value="S">South</option>
+                    <option value="E" data-localize="east">East</option>
+                    <option value="W" data-localize="west">West</option>
+                    <option value="N" data-localize="north">North</option>
+                    <option value="S" data-localize="south">South</option>
                 </select>
             </div>
             </div>
-            <button type="submit" class="btn btn-raised btn-success">Submit</button>
+            <button type="submit" class="btn btn-raised btn-success" data-localize="submit">Submit</button>
             <button id="refresh_btn" type="button" class="btn btn-secondary bmd-btn-icon float-right"><i class="material-icons">refresh</i></button>
         </form>
         <br>
@@ -104,8 +105,8 @@
     </table>-->
         <div id='map' style='width: 100%; height: 500px;'></div>
 
-        <div class="alert alert-warning" role="alert">
-          Please use this website responsibly. <b>Please wait at least <u>30 seconds</u></b> between each request. This website is not affiliated with the STM - Société de transport de Montréal or any other transportation agency.
+        <div class="alert alert-warning" role="alert"  data-localize="alert">
+          Please use this website responsibly. Please wait at least 30 seconds between each request. This website is not affiliated with the STM (Société de transport de Montréal) or any other transportation agency.
         </div>
 
         <script src="https://cdn.rawgit.com/FezVrasta/snackbarjs/1.1.0/dist/snackbar.min.js"></script>
@@ -118,21 +119,28 @@
     <script type="text/javascript">
         // préparation de la page
 
+        $("[data-localize]").localize("lang", { language: "fr" });
         var baseUrl = "https://demo8136770.mockable.io/pub/i3/v1c/api/en/";
+
+        // changement de langue
+        $("#lang_switch").click(function(){
+          $("[data-localize]").localize("lang", { language: "fr" });
+        });
 
         // préparation de la carte
 
-        var mymap = L.map('map').setView([45.5576, -73.7242], 10);
+        var ibus_map = L.map('map').setView([45.5576, -73.7242], 10);
 
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
             id: 'mapbox.streets',
             accessToken: 'pk.eyJ1IjoiZmVsaXhpbngiLCJhIjoiY2lqYzJoMW9vMDA1dnZsa3F3cmZzcWVsciJ9.ZWBQm52vI7RFRwGuoAzwMg'
-        }).addTo(mymap);
+        }).addTo(ibus_map);
 
-        var posLayer = L.layerGroup().addTo(mymap);
-        var transitLayer = L.layerGroup().addTo(mymap);
+        var posLayer = L.layerGroup().addTo(ibus_map);
+        var lineLayer = L.layerGroup().addTo(ibus_map);
+        var transitLayer = L.layerGroup().addTo(ibus_map);
 
         // autres transports
 
@@ -161,7 +169,7 @@
             iconSize: [10, 10]
         });
 
-        //TODO GET request
+        // GET request
         $("#lineChooser").submit(function(event) {
             var lineId = $("#inputLine").val();
             var lineDir = $("#inputDir").val();
@@ -169,6 +177,8 @@
             var stops_url = baseUrl + "lines/" + lineId + "/stops?direction=" + lineDir + "&withconnection=0";
             var geo_url = baseUrl + "lines/" + lineId + "/routes/default?direction=" + lineDir;
             var pos_url = baseUrl + "lines/" + lineId + "/positions/?direction=" + lineDir + "&weelchair=0";
+            lineLayer.clearLayers();
+            posLayer.clearLayers();
             // ARRÊTS DE LA LIGNE
             $.get(stops_url, function(data, stop_status) {
                 console.log("stops call result: " + stop_status);
@@ -186,7 +196,7 @@
                 data.result.forEach(function(element) {
                     L.marker(L.latLng(element.lat, element.lon), {
                         icon: stopIcon
-                    }).addTo(mymap).bindPopup("<b>" + element.identifier + "</b> " + element.description);
+                    }).addTo(lineLayer).bindPopup("<b>" + element.identifier + "</b> " + element.description);
                 });
             });
             // GÉOGRAPHIE DES LIGNES
@@ -196,8 +206,8 @@
                 let line_latlngs = data.Geometry;
                 let line_polyline = L.polyline(line_latlngs, {
                     color: '#009fdb'
-                }).addTo(mymap);
-                mymap.fitBounds(line_polyline.getBounds());
+                }).addTo(lineLayer);
+                ibus_map.fitBounds(line_polyline.getBounds());
             });
             // POSITIONS DES BUS
             $.get(pos_url, function(data, pos_status) {
@@ -219,9 +229,9 @@
         });
 
         $("#refresh_btn").click(function() {
-            posLayer.clearLayers();
             var lineId = $("#inputLine").val();
             var lineDir = $("#inputDir").val();
+            posLayer.clearLayers();
             var pos_url = baseUrl + "lines/" + lineId + "/positions/?direction=" + lineDir + "&weelchair=0";
             $.get(pos_url, function(data, pos_status) {
                 console.log("pos sult: " + pos_status);
