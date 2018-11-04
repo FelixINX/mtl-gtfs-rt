@@ -1,6 +1,6 @@
 // préparation de la page
 
-var dataUrl = 'https://mtl-gtfs-rt-backend.herokuapp.com/data/latest.json';
+var dataUrl = 'https://mtl-gtfs-rt-backend.azurewebsites.net/data/latest.json';
 
 // préparation de la carte
 
