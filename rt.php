@@ -4,9 +4,6 @@ require_once 'vendor/autoload.php';
 
 use transit_realtime\FeedMessage;
 
-$dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->load();
-
 // set headers for STM GTFS realtime request
 $exo_feed_url = "http://opendata.rtm.quebec:2539/ServiceGTFSR/VehiclePosition.pb?token=" . getenv('EXO_APIKEY');
 $stm_feed_url = "https://api.stm.info/pub/od/gtfs-rt/ic/v1/vehiclePositions";
