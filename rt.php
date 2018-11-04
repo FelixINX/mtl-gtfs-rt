@@ -6,10 +6,8 @@ use transit_realtime\FeedMessage;
 
 // set headers for STM GTFS realtime request
 $exo_feed_url = "http://opendata.rtm.quebec:2539/ServiceGTFSR/VehiclePosition.pb?token=" . getenv('EXO_APIKEY');
-echo "\n" . $exo_feed_url;
 $stm_feed_url = "https://api.stm.info/pub/od/gtfs-rt/ic/v1/vehiclePositions";
 $stm_apikey_header = "apikey: " . getenv('STM_APIKEY');
-echo "\n" . $stm_apikey_header . "\n";
 $stm_opts = [
   "http" => [
     "method" => "POST",
@@ -80,6 +78,7 @@ foreach ($stm_feed->getEntityList() as $entity) {
 }
 
 $json = json_encode($data);
-file_put_contents("data/latest.json", $json);
+echo $json;
+echo file_put_contents("data/latest.json", $json);
 
 echo "gtfs realtime success!";
