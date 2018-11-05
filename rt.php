@@ -24,10 +24,13 @@ $exo_feed->parse($exo_data);
 $stm_feed->parse($stm_data);
 
 $data = array(
-  "time_exo" => $exo_feed->header->getTimestamp(),
+  "time_exo" => null,
   "time_stm" => $stm_feed->header->getTimestamp(),
   "results" => array()
 );
+
+// download raw data
+file_put_contents("data/raw/vehiclePosition.pb", $stm_data);
 
 // add exo data to array
 /*foreach ($exo_feed->getEntityList() as $entity) {
