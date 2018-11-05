@@ -85,7 +85,7 @@ $(document).ready(function() {
     }).addTo(transitLayer);
   });
   $.get("geojson/exo4.geojson", function(data) {
-    L.geoJSON(data), {
+    L.geoJSON(data, {
       style: function(feature) {
         return {
           color: '#4fb7b4'
