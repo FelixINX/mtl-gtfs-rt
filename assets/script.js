@@ -22,7 +22,7 @@ var transitLayer = L.layerGroup().addTo(mtl_gtfsrt_map);
 $(document).ready(function() {
   // ajoute les lignes de métro et train
   $.get("geojson/stm1.geojson", function(data) {
-    L.geoJSON(JSON.parse(data), {
+    L.geoJSON(data, {
       style: function(feature) {
         return {
           color: '#00a54f'
@@ -31,7 +31,7 @@ $(document).ready(function() {
     }).addTo(transitLayer);
   });
   $.get("geojson/stm2.geojson", function(data) {
-    L.geoJSON(JSON.parse(data), {
+    L.geoJSON(data, {
       style: function(feature) {
         return {
           color: '#f58220'
@@ -40,7 +40,7 @@ $(document).ready(function() {
     }).addTo(transitLayer);
   });
   $.get("geojson/stm4.geojson", function(data) {
-    L.geoJSON(JSON.parse(data), {
+    L.geoJSON(data, {
       style: function(feature) {
         return {
           color: '#ffdc01'
@@ -49,7 +49,7 @@ $(document).ready(function() {
     }).addTo(transitLayer);
   });
   $.get("geojson/stm5.geojson", function(data) {
-    L.geoJSON(JSON.parse(data), {
+    L.geoJSON(data, {
       style: function(feature) {
         return {
           color: '#0072bc'
@@ -58,7 +58,7 @@ $(document).ready(function() {
     }).addTo(transitLayer);
   });
   $.get("geojson/exo1.geojson", function(data) {
-    L.geoJSON(JSON.parse(data), {
+    L.geoJSON(data, {
       style: function(feature) {
         return {
           color: '#f76179'
@@ -67,7 +67,7 @@ $(document).ready(function() {
     }).addTo(transitLayer);
   });
   $.get("geojson/exo2.geojson", function(data) {
-    L.geoJSON(JSON.parse(data), {
+    L.geoJSON(data, {
       style: function(feature) {
         return {
           color: '#a4cb92'
@@ -76,7 +76,7 @@ $(document).ready(function() {
     }).addTo(transitLayer);
   });
   $.get("geojson/exo3.geojson", function(data) {
-    L.geoJSON(JSON.parse(data), {
+    L.geoJSON(data, {
       style: function(feature) {
         return {
           color: '#989ec3'
@@ -85,7 +85,7 @@ $(document).ready(function() {
     }).addTo(transitLayer);
   });
   $.get("geojson/exo4.geojson", function(data) {
-    L.geoJSON(JSON.parse(data), {
+    L.geoJSON(data), {
       style: function(feature) {
         return {
           color: '#4fb7b4'
@@ -94,7 +94,7 @@ $(document).ready(function() {
     }).addTo(transitLayer);
   });
   $.get("geojson/exo5.geojson", function(data) {
-    L.geoJSON(JSON.parse(data), {
+    L.geoJSON(data, {
       style: function(feature) {
         return {
           color: '#cf5a94'
@@ -103,7 +103,7 @@ $(document).ready(function() {
     }).addTo(transitLayer);
   });
   $.get("geojson/exo6.geojson", function(data) {
-    L.geoJSON(JSON.parse(data), {
+    L.geoJSON(data, {
       style: function(feature) {
         return {
           color: '#f2a69a'
