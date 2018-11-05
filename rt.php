@@ -78,7 +78,6 @@ foreach ($stm_feed->getEntityList() as $entity) {
 }
 
 $json = json_encode($data);
-echo $json;
-echo file_put_contents("data/latest.json", $json);
+file_put_contents("data/latest.json", $json);
 
-echo "gtfs realtime success!";
+echo "success!";
