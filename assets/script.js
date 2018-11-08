@@ -157,7 +157,7 @@ $(document).ready(function() {
       ],
       dom: 'BSlftipr',
       buttons: [
-        'csv', 'excel', 'pdf', 'print'
+        'csv', 'excel'
       ]
     });
     let timestamp = data.time_stm;
@@ -177,25 +177,57 @@ $(document).ready(function() {
   $(".btn-tab-map").css("background-color", "white");
   $(".btn-tab-list").click(function() {
     $(".btn-tab-map").css("background-color", "#E2E2E2");
+    $(".btn-tab-help").css("background-color", "#E2E2E2");
+    $(".btn-tab-info").css("background-color", "#E2E2E2");
     $(".btn-tab-list").css("background-color", "white");
     $(".tab-map").css("display", "none");
+    $(".tab-help").css("display", "none");
+    $(".tab-info").css("display", "none");
+    $("#data-timestamp").css("display", "unset");
     $(".tab-list").css("display", "unset");
   });
   $(".btn-tab-map").click(function() {
     $(".btn-tab-list").css("background-color", "#E2E2E2");
+    $(".btn-tab-help").css("background-color", "#E2E2E2");
+    $(".btn-tab-info").css("background-color", "#E2E2E2");
     $(".btn-tab-map").css("background-color", "white");
     $(".tab-list").css("display", "none");
+    $(".tab-help").css("display", "none");
+    $(".tab-info").css("display", "none");
+    $("#data-timestamp").css("display", "unset");
     $(".tab-map").css("display", "unset");
+  });
+  $(".btn-tab-help").click(function() {
+    $(".btn-tab-map").css("background-color", "#E2E2E2");
+    $(".btn-tab-list").css("background-color", "#E2E2E2");
+    $(".btn-tab-info").css("background-color", "#E2E2E2");
+    $(".btn-tab-help").css("background-color", "white");
+    $(".tab-map").css("display", "none");
+    $(".tab-list").css("display", "none");
+    $(".tab-info").css("display", "none");
+    $("#data-timestamp").css("display", "none");
+    $(".tab-help").css("display", "unset");
+  });
+  $(".btn-tab-info").click(function() {
+    $(".btn-tab-map").css("background-color", "#E2E2E2");
+    $(".btn-tab-help").css("background-color", "#E2E2E2");
+    $(".btn-tab-list").css("background-color", "#E2E2E2");
+    $(".btn-tab-info").css("background-color", "white");
+    $(".tab-map").css("display", "none");
+    $(".tab-help").css("display", "none");
+    $(".tab-list").css("display", "none");
+    $("#data-timestamp").css("display", "none");
+    $(".tab-info").css("display", "unset");
   });
 });
 
 //icones
 
 var busSTMIcon = L.icon({
-  iconUrl: 'http://ibus/assets/map-bus-stm.svg',
+  iconUrl: 'https://felixinx.github.io/iBUS-explorer/assets/map-bus-stm.svg',
   iconSize: [20, 20]
 });
 var exo = L.icon({
-  iconUrl: 'http://ibus/assets/map-train-exo.svg',
+  iconUrl: 'https://felixinx.github.io/iBUS-explorer/assets/map-train-exo.svg',
   iconSize: [20, 20]
 });

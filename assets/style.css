@@ -128,6 +128,15 @@ body {
   margin-top: 50px;
 }
 
+@media (max-width: 768px) {
+  .main-bg .alert {
+    margin-left: 0;
+  }
+  .main-bg .alert .fas {
+    display: none;
+  }
+}
+
 .main-bg .alert .fas {
   font-size: -webkit-xxx-large;
   text-align: center;
@@ -152,12 +161,12 @@ body {
   margin-top: 10px;
 }
 
-.tab-list {
+.tab-list, .tab-help, .tab-info {
   display: none;
 }
 
 .footer {
-  margin-top: 10px;
+  margin-top: 15px;
   background: #5B86E5;
   width: 100%;
   height: 60px;
@@ -165,6 +174,44 @@ body {
   text-align: center;
 }
 
+.footer .container {
+  background: #5B86E5;
+}
+
+@media (max-width: 992px) {
+  .footer .container {
+    background: #5B86E5;
+  }
+  .footer {
+    line-height: inherit;
+  }
+}
+
 .footer a {
+  color: white;
+}
+
+.main-azure {
+  height: fit-content;
+  width: 100%;
+  background: #36D1DC;
+  background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);
+  background: linear-gradient(to right, #5B86E5, #36D1DC);
+}
+
+.main-azure .alert {
+  width: 100%;
+  color: white;
+  background-color: #ED213A;
+  border: 10px solid;
+  border-radius: 0;
+  border-color: #ED213A;
+  margin: 0;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.main-azure .alert a {
   color: white;
 }
