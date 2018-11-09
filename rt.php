@@ -4,6 +4,16 @@ require_once 'vendor/autoload.php';
 
 use transit_realtime\FeedMessage;
 
+// check request key header
+$app_apikey_header = $_SERVER['HTTP_X_API_KEY'];
+$app_apikey = getenv('APP_APIKEY');
+
+if ($app_apikey_header == $app_apikey) {
+  echo "Valid api key\n";
+} else {
+  exit("Invalid request key");
+}
+
 // set headers for STM GTFS realtime request
 $exo_feed_url = "http://opendata.rtm.quebec:2539/ServiceGTFSR/VehiclePosition.pb?token=" . getenv('EXO_APIKEY');
 $stm_feed_url = "https://api.stm.info/pub/od/gtfs-rt/ic/v1/vehiclePositions";
@@ -83,4 +93,4 @@ foreach ($stm_feed->getEntityList() as $entity) {
 $json = json_encode($data);
 file_put_contents("data/latest.json", $json);
 
-echo "success!";
+echo "\nsuccess!";

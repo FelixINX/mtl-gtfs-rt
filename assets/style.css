@@ -117,7 +117,7 @@ body {
   font-weight: bold;
 }
 
-.main-bg .alert {
+.main-bg .alert-danger {
   width: fit-content;
   margin-left: 20px;
   color: white;
@@ -125,6 +125,16 @@ body {
   border: 10px solid;
   border-radius: 0;
   border-color: #ED213A;
+  margin-top: 50px;
+}
+.main-bg .alert-success {
+  width: fit-content;
+  margin-left: 20px;
+  color: white;
+  background-color: #155724;
+  border: 10px solid;
+  border-radius: 0;
+  border-color: #155724;
   margin-top: 50px;
 }
 
@@ -138,7 +148,7 @@ body {
 }
 
 .main-bg .alert .fas {
-  font-size: -webkit-xxx-large;
+  font-size: 40px;
   text-align: center;
 }
 
