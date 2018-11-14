@@ -1,6 +1,6 @@
 // préparation de la page
 
-var dataUrl = 'http://ibus/data/latest.json';
+var dataUrl = 'https://mtl-gtfs-rt-backend.azurewebsites.net/data/latest.json';
 
 // préparation de la carte
 
