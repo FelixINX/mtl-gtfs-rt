@@ -33,9 +33,12 @@ $stm_feed = new FeedMessage();
 $exo_feed->parse($exo_data);
 $stm_feed->parse($stm_data);
 
+$timestamp_exo = (string)$exo_feed->header->getTimestamp();
+$timestamp_stm = (string)$stm_feed->header->getTimestamp();
+
 $data = array(
-  "time_exo" => null,
-  "time_stm" => $stm_feed->header->getTimestamp(),
+  "time_exo" => $timestamp_exo,
+  "time_stm" => $timestamp_stm,
   "results" => array()
 );
 
@@ -43,7 +46,7 @@ $data = array(
 file_put_contents("data/raw/vehiclePosition.pb", $stm_data);
 
 // add exo data to array
-/*foreach ($exo_feed->getEntityList() as $entity) {
+foreach ($exo_feed->getEntityList() as $entity) {
     $vehicle = $entity->getId();
     $trip = $entity->vehicle->trip->getTripId();
     $route = $entity->vehicle->trip->getRouteId();
@@ -62,7 +65,7 @@ file_put_contents("data/raw/vehiclePosition.pb", $stm_data);
     'lat' => $lat,
     'lon' => $lon
   );
-}*/
+}
 
 // add STM data to array
 foreach ($stm_feed->getEntityList() as $entity) {
@@ -72,7 +75,12 @@ foreach ($stm_feed->getEntityList() as $entity) {
     $start_time = $entity->vehicle->trip->getStartTime();
     $start_date = $entity->vehicle->trip->getStartDate();
     $current_stop_sequence = $entity->vehicle->getCurrentStopSequence();
-    $current_status = $entity->vehicle->getCurrentStatus();
+    $current_status_number = $entity->vehicle->getCurrentStatus();
+    if ($current_status_number == 1) {
+      $current_status = "STOPPED_AT";
+    } elseif ($current_status_number == 2) {
+      $current_status = "IN_TRANSIT_TO";
+    }
     $lat = round($entity->vehicle->position->getLatitude(), 5);
     $lon = round($entity->vehicle->position->getLongitude(), 5);
     $data['results'][] = array(
@@ -89,6 +97,13 @@ foreach ($stm_feed->getEntityList() as $entity) {
     'lon' => $lon
   );
 }
+
+$csv_handle = fopen("data/count.csv", "a");
+$exo_count = (string)count($exo_feed->getEntityList());
+$stm_count = (string)count($stm_feed->getEntityList());
+$csv_array = array($timestamp_exo, $timestamp_stm, $exo_count, $stm_count);
+fputcsv($csv_handle, $csv_array);
+fclose($csv_handle);
 
 $json = json_encode($data);
 file_put_contents("data/latest.json", $json);

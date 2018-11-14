@@ -1,6 +1,6 @@
 // préparation de la page
 
-var dataUrl = 'https://mtl-gtfs-rt-backend.azurewebsites.net/data/latest.json';
+var dataUrl = 'http://ibus/data/latest.json';
 
 // préparation de la carte
 
@@ -117,7 +117,7 @@ $(document).ready(function() {
     // affiche les données sur la carte
     data.results.forEach(function(element) {
       L.marker(L.latLng(element.lat, element.lon), {
-          icon: busSTMIcon
+          icon: icons[element.icon]
         }).addTo(posLayer)
         .bindPopup("<h3>" + element.agency + " " + element.vehicle_id + "</h3><b>Trip: </b> " + element.trip_id + "<br><b>Route: </b>" + element.route_id + "<br><b>Start: </b>" + element.start_date + element.start_time + "<br><b>Current stop sequence: </b>" + element.current_stop_sequence + "<br><b>Status: </b>" + element.current_status);
     });
@@ -160,19 +160,23 @@ $(document).ready(function() {
         'csv', 'excel'
       ]
     });
-    var timestamp = data.time_stm;
-    // Create a new JavaScript Date object based on the timestamp
-    // multiplied by 1000 so that the argument is in milliseconds, not seconds.
-    var date = new Date(timestamp * 1000);
-    // Hours part from the timestamp
-    var hours = date.getHours();
-    // Minutes part from the timestamp
-    var minutes = "0" + date.getMinutes();
-    // Seconds part from the timestamp
-    var seconds = "0" + date.getSeconds();
-    // Will display time in 10:30:23 format
-    var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-    $("#data-timestamp").append(formattedTime);
+    // convert STM timestamp to readable data
+    var stm_timestamp = data.time_stm;
+    var stm_date = new Date(stm_timestamp * 1000);
+    var stm_hours = stm_date.getHours();
+    var stm_minutes = "0" + stm_date.getMinutes();
+    var stm_seconds = "0" + stm_date.getSeconds();
+    var stm_formattedTime = stm_hours + ':' + stm_minutes.substr(-2) + ':' + stm_seconds.substr(-2);
+    $("#data-timestamp").append("STM:" + stm_formattedTime);
+
+    // convert STM timestamp to readable data
+    var exo_timestamp = data.time_exo;
+    var exo_date = new Date(exo_timestamp * 1000);
+    var exo_hours = exo_date.getHours();
+    var exo_minutes = "0" + exo_date.getMinutes();
+    var exo_seconds = "0" + exo_date.getSeconds();
+    var exo_formattedTime = exo_hours + ':' + exo_minutes.substr(-2) + ':' + exo_seconds.substr(-2);
+    $("#data-timestamp").append(" and exo:" + exo_formattedTime);
   });
   $(".btn-tab-map").css("background-color", "white");
   $(".btn-tab-list").click(function() {
@@ -223,11 +227,13 @@ $(document).ready(function() {
 
 //icones
 
-var busSTMIcon = L.icon({
-  iconUrl: 'https://felixinx.github.io/mtl-gtfs-rt/assets/map-bus-stm.svg',
-  iconSize: [20, 20]
-});
-var exo = L.icon({
-  iconUrl: 'https://felixinx.github.io/mtl-gtfs-rt/assets/map-train-exo.svg',
-  iconSize: [20, 20]
-});
+var icons = {
+  "busSTMIcon": L.icon({
+    iconUrl: 'https://felixinx.github.io/mtl-gtfs-rt/assets/map-bus-stm.svg',
+    iconSize: [20, 20]
+  }),
+  "trainExoIcon": L.icon({
+    iconUrl: 'https://felixinx.github.io/mtl-gtfs-rt/assets/map-train-exo.svg',
+    iconSize: [20, 20]
+  })
+};
