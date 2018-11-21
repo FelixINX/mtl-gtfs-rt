@@ -1,7 +1,8 @@
 {
     "require": {
         "google/gtfs-realtime-bindings": "0.0.2",
-        "vlucas/phpdotenv": "^2.5"
+        "vlucas/phpdotenv": "^2.5",
+        "league/csv": "^9.1"
     },
     "require-dev": {
       "heroku/heroku-buildpack-php": "*"

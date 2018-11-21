@@ -3,12 +3,26 @@ body {
 }
 
 .main-bg {
-  height: fit-content;
-  width: 100%;
-  background: #36D1DC;
-  background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);
-  background: linear-gradient(to right, #5B86E5, #36D1DC);
+    position: relative;
+    height: fit-content;
+    width: 100%;
+    background: url("http://ibus/assets/images/2018-nov.jpg") center center no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
 }
+
+.main-bg:before {
+     content: '';
+     position: absolute;
+     top: 0;
+     right: 0;
+     bottom: 0;
+     left: 0;
+     background: #36D1DC;
+     background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);
+     background: linear-gradient(to right, #5B86E5, #36D1DC);
+     opacity: 0.6;
+ }
 
 .art-lines {
   right: 0;
@@ -111,6 +125,7 @@ body {
 .main-text {
   padding-top: 175px;
   margin-left: 20px;
+    position: relative;
 }
 
 .main-text h1 {
@@ -153,8 +168,13 @@ body {
 }
 
 .main-choose {
+    position: relative;
   margin-left: 20px;
   margin-top: 50px;
+}
+
+.container-fluid {
+    position: relative;
 }
 
 .btn-choices {
@@ -171,7 +191,12 @@ body {
   margin-top: 10px;
 }
 
-.tab-list, .tab-help, .tab-info {
+.text-loading {
+    text-align: center;
+    line-height: 700px;
+}
+
+.tab-map, .tab-list, .tab-help, .tab-info {
   display: none;
 }
 

@@ -1,0 +1,15 @@
+{
+  "short_name": "MTL Tracker",
+  "name": "Montreal realtime transit tracker",
+  "icons": [
+    {
+      "src": "/assets/icons.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#36D1DC",
+  "display": "standalone",
+  "theme_color": "#36D1DC"
+}

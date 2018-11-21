@@ -3,6 +3,9 @@
 require_once 'vendor/autoload.php';
 
 use transit_realtime\FeedMessage;
+use League\Csv\Reader;
+
+/*
 
 // check request key header
 $app_apikey_header = $_SERVER['HTTP_X_API_KEY'];
@@ -13,6 +16,8 @@ if ($app_apikey_header == $app_apikey) {
 } else {
   exit("Invalid request key");
 }
+
+*/
 
 // set headers for STM GTFS realtime request
 $exo_feed_url = "http://opendata.rtm.quebec:2539/ServiceGTFSR/VehiclePosition.pb?token=" . getenv('EXO_APIKEY');
@@ -45,6 +50,11 @@ $data = array(
 // download raw data
 file_put_contents("data/raw/vehiclePosition.pb", $stm_data);
 
+// get exo trips data
+$exo_trips_handler = Reader::createFromPath('data/trips/exo-train.csv', 'r');
+$exo_trips_handler->setHeaderOffset(0);
+$exo_trips = $exo_trips_handler->getRecords();
+
 // add exo data to array
 foreach ($exo_feed->getEntityList() as $entity) {
     $vehicle = $entity->getId();
@@ -52,7 +62,18 @@ foreach ($exo_feed->getEntityList() as $entity) {
     $route = $entity->vehicle->trip->getRouteId();
     $lat = round($entity->vehicle->position->getLatitude(), 5);
     $lon = round($entity->vehicle->position->getLongitude(), 5);
-    $data['results'][] = array(
+
+    echo $trip + "\n";
+
+    $trip_info = null;
+    foreach ($exo_trips as $obj) {
+        if ($trip == $obj->id) {
+            $trip_info = $obj;
+            break;
+        }
+    }
+    var_dump($trip_info);
+    /*$data['results'][] = array(
     'agency' => 'exo',
     'icon' => 'trainExoIcon',
     'vehicle_id' => $vehicle,
@@ -64,7 +85,7 @@ foreach ($exo_feed->getEntityList() as $entity) {
     'current_status' => null,
     'lat' => $lat,
     'lon' => $lon
-  );
+    );*/
 }
 
 // add STM data to array
@@ -83,7 +104,19 @@ foreach ($stm_feed->getEntityList() as $entity) {
     }
     $lat = round($entity->vehicle->position->getLatitude(), 5);
     $lon = round($entity->vehicle->position->getLongitude(), 5);
-    $data['results'][] = array(
+
+    echo $trip + "\n";
+
+    $trip_info = null;
+    foreach ($exo_trips as $obj) {
+
+        if ($trip == $obj->trip_id) {
+            $trip_info = $obj;
+            break;
+        }
+    }
+    var_dump($trip_info);
+    /*$data['results'][] = array(
     'agency' => 'STM',
     'icon' => 'busSTMIcon',
     'vehicle_id' => $vehicle,
@@ -95,7 +128,7 @@ foreach ($stm_feed->getEntityList() as $entity) {
     'current_status' => $current_status,
     'lat' => $lat,
     'lon' => $lon
-  );
+    );*/
 }
 
 $csv_handle = fopen("data/count.csv", "a");

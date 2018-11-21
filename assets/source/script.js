@@ -2,6 +2,14 @@
 
 var dataUrl = 'https://mtl-gtfs-rt-backend.azurewebsites.net/data/latest.json';
 
+// load trips
+
+var exoTrips = {};
+var exoTripsUrl = 'http://ibus/data/trips/exo.json';
+$.getJSON(exoTripsUrl, function (data) {
+    exoTrips = data;
+});
+
 // préparation de la carte
 
 var mtl_gtfsrt_map = L.map('map').setView([45.5576, -73.7242], 11.5);
@@ -116,10 +124,18 @@ $(document).ready(function() {
     console.log("pos call result: " + pos_status);
     // affiche les données sur la carte
     data.results.forEach(function(element) {
+        var trip_info = $.grep(exoTrips, function(obj){return obj.id === element.trip_id}, false)[0];
+        if (trip_info == null) {
+            trip_info = {
+                headsign: "Not found",
+                id: element.trip_id,
+                number: "Not found"
+            };
+        }
       L.marker(L.latLng(element.lat, element.lon), {
           icon: icons[element.icon]
         }).addTo(posLayer)
-        .bindPopup("<h3>" + element.agency + " " + element.vehicle_id + "</h3><b>Trip: </b> " + element.trip_id + "<br><b>Route: </b>" + element.route_id + "<br><b>Start: </b>" + element.start_date + element.start_time + "<br><b>Current stop sequence: </b>" + element.current_stop_sequence + "<br><b>Status: </b>" + element.current_status);
+        .bindPopup("<h3>" + element.agency + " " + element.vehicle_id + "</h3><b>Trip: </b> " + element.trip_id + "<br><b>Route: </b>" + element.route_id + "<br><b>Headsign: </b>" + trip_info.headsign + "<br><b>Departure number: </b>" + trip_info.number + "<br><b>Start: </b>" + element.start_date + element.start_time + "<br><b>Current stop sequence: </b>" + element.current_stop_sequence + "<br><b>Status: </b>" + element.current_status);
     });
     // affiche les données dans la liste
     $('#data-table').DataTable({
@@ -167,7 +183,7 @@ $(document).ready(function() {
     var stm_minutes = "0" + stm_date.getMinutes();
     var stm_seconds = "0" + stm_date.getSeconds();
     var stm_formattedTime = stm_hours + ':' + stm_minutes.substr(-2) + ':' + stm_seconds.substr(-2);
-    $("#data-timestamp").append("STM:" + stm_formattedTime);
+    $("#data-timestamp").append("STM: " + stm_formattedTime);
 
     // convert STM timestamp to readable data
     var exo_timestamp = data.time_exo;
@@ -176,7 +192,9 @@ $(document).ready(function() {
     var exo_minutes = "0" + exo_date.getMinutes();
     var exo_seconds = "0" + exo_date.getSeconds();
     var exo_formattedTime = exo_hours + ':' + exo_minutes.substr(-2) + ':' + exo_seconds.substr(-2);
-    $("#data-timestamp").append(" and exo:" + exo_formattedTime);
+    $("#data-timestamp").append(" - exo: " + exo_formattedTime);
+      $(".tab-loading").css("display", "none");
+      $(".tab-map").css("display", "unset");
   });
   $(".btn-tab-map").css("background-color", "white");
   $(".btn-tab-list").click(function() {
