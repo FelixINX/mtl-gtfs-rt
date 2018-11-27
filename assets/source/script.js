@@ -1,6 +1,6 @@
 // map preparation
 
-var mtl_gtfsrt_map = L.map('map').setView([45.5576, -73.7242], 11.5);
+var mtl_gtfsrt_map = L.map('leaflet-map').setView([45.5576, -73.7242], 11.5);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -29,7 +29,8 @@ $(function () {
     loadData(dataUrl);
 
     // when the page has finish loading, show the map
-    $('#mainTab li:first-child a').tab('show');
+    $('.loading').css('display', 'none');
+    $('#leaflet-map').css('opacity', '1');
 
     function showOnMap(lat, lon) {
         mtl_gtfsrt_map.setView([lat, lon], 18);
