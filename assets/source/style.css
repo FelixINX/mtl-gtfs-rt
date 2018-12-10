@@ -111,15 +111,11 @@ body {
     font-weight: bold;
 }
 
-.main-bg .alert-danger {
-    width: fit-content;
-    margin-left: 20px;
+.container-fluid .alert-danger {
     color: white;
     background-color: #ED213A;
-    border: 10px solid;
     border-radius: 0;
     border-color: #ED213A;
-    margin-top: 50px;
 }
 
 .main-bg .alert-success {
@@ -237,7 +233,11 @@ body {
 #loading {
     line-height: 700px;
     font-size: 2rem;
-    text-align: center;
+    position: absolute;
+}
+
+#leaflet-map {
+    opacity: 0.25;
 }
 
 .alert-timestamp {
@@ -404,7 +404,6 @@ body {
 
 .main-bg {
     position: relative;
-    background: url("https://images.unsplash.com/photo-1517166357932-d20495eeffd7?ixlib=rb-0.3.5&s=a169bb447c598b7d799b2ddd505a8b7b&auto=format&fit=crop&w=1355&q=80") center center no-repeat;
     background-size: cover;
     height: fit-content;
     width: 100%;
@@ -416,11 +415,41 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(54, 209, 220, 0.6);
-    background: -webkit-linear-gradient(to right,#rgba(91, 134, 229, 0.75),rgba(54, 209, 220, 0.25));
-    background: linear-gradient(to right,rgba(91, 134, 229, 0.75),rgba(54, 209, 220, 0.25));
+    background: rgba(201, 214, 255, 0.6);
+    background: -webkit-linear-gradient(to right,rgba(201, 214, 255, 0.75),rgba(226, 226, 226, 0.25));
+    background: linear-gradient(to right,rgba(201, 214, 255, 0.75),rgba(226, 226, 226, 0.25));
 }
 
 .main-text, .main-choose{
     position: relative;
+}
+
+.santa-popup .leaflet-popup-content-wrapper {
+    background-color: #EF5361;
+    border-color: #4DC168;
+    border-width: 10px;
+    border-style: dashed;
+}
+
+.santa-popup .leaflet-popup-content {
+    color: white;
+}
+
+.santa-popup .leaflet-popup-close-button {
+    color: white;
+    top: 10px;
+    right: 10px;
+}
+
+.christmas-stop {
+    position: absolute;
+    bottom: 0;
+    right: 2rem;
+    height: 20rem;
+}
+
+@media (max-width: 1430px) {
+    .christmas-stop {
+        display: none;
+    }
 }

@@ -59,43 +59,24 @@
 </ul>
 <!-- END CHRISTMAS -->
 <div class="main-bg">
-    <img class="art-lines" src="assets/lignes.svg" alt="">
-    <img class="art-train" src="assets/train.svg" alt="">
-    <img class="art-bus" src="assets/bus.svg" alt="">
     <div class="main-text">
         <h1>Welcome to the Montreal real time transit viewer!</h1>
         <h3>Here you can see a part of our transit system in real time.</h3>
-    </div>
-    <div class="alert alert-danger">
-        <div class="row">
-            <div class="col-1">
-                <i class="fas fa-exclamation-circle"></i>
-            </div>
-            <div class="col-11">
-                <h5>Before you start...</h5>
-                The data presented on this page should not be used for transportation purposes. <b>The data may not be
-                up to date.</b><br> This website is not affiliated with any transportation organization.
-            </div>
-        </div>
     </div>
     <div class="alert alert-success">
         <div class="row">
             <div class="col-12">
                 <h5>Latest news</h5>
-                <b>v1.1.0</b> Changelog :
-                <ul>
-                    <li>Better list with improved search</li>
-                    <li>Show on map button</li>
-                    <li>Some improvement under the hood</li>
-                </ul>
+                <b>Happy holidays!</b>
             </div>
         </div>
     </div>
     <div class="main-choose">
+        <img src="assets/christmas-bus-stop.svg" class="christmas-stop" alt="">
         <h3>Please choose how you wish to see the data</h3>
         <ul class="nav nav-tabs" id="mainTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link" id="map-tab" data-toggle="tab" href="#map" role="tab" aria-controls="map"
+                <a class="nav-link active show" id="map-tab" data-toggle="tab" href="#map" role="tab" aria-controls="map"
                    aria-selected="true"><i class="fas fa-map-marked-alt"></i> Map</a>
             </li>
             <li class="nav-item">
@@ -115,11 +96,9 @@
 </div>
 <div class="container-fluid">
     <div class="tab-content" id="mainTabContent">
-        <div class="tab-pane fade show active" id="loading" role="tabpanel" aria-labelledby="loading-tab">
+        <div class="tab-pane fade active show" id="map" role="tabpanel" aria-labelledby="map-tab">
             <span class="loading">Loading...</span>
-        </div>
-        <div class="tab-pane fade" id="map" role="tabpanel" aria-labelledby="map-tab">
-            <div id='map' style='width: 100%; height: 700px;'></div>
+            <div id='leaflet-map' style='width: 100%; height: 700px;'></div>
         </div>
         <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="list-tab">
             <table id="data-table" class="table table-striped table-bordered" style="width: 100%;">
@@ -156,12 +135,30 @@
         <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
             The data is given by the <a href="https://stm.info">Société de transport de Montréal</a> and <a href="https://exo.quebec">exo - Réseau de transport métropolitain</a> under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
             <br><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+            <hr>
+            <h1>Christmas update credits</h1>
+            <ul>
+                <li>Background photo : <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@joyreal328?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Joy Real"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Joy Real</span></a>  <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@nicolaerosu?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Nicolae Rosu"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Nicolae Rosu</span></a></li>
+                <li>Bus, train and bus stop icon : Santa Tracker by Google</li>
+                <li>Light bulbs : <a href="https://codepen.io/tobyj/pen/QjvEex">https://codepen.io/tobyj/pen/QjvEex</a></li>
+            </ul>
         </div>
     </div>
     <div class="alert alert-info alert-timestamp" role="alert">
         <i class="fas fa-clock"></i> The data comes from the following agencies :
         <ul class="ul-timestamp">
         </ul>
+    </div>
+    <div class="alert alert-danger">
+        <div class="row">
+            <div class="col-1">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="col-11">
+                <h5>Remember...</h5>
+                The data presented on this page should not be used for transportation purposes. <b>The data may not be up to date.</b> This website is not affiliated with any transportation organization.
+            </div>
+        </div>
     </div>
 </div>
 <footer class="footer">
