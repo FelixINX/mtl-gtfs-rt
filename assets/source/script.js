@@ -150,11 +150,11 @@ var icons = {
         iconSize: [20, 20]
     }),
     "christmasBusIcon": L.icon({
-        iconUrl: 'http://localhost/christmas/assets/map-christmas-bus.svg',
+        iconUrl: 'https://felixinx.github.io/mtl-gtfs-rt/assets/map-christmas-bus.svg',
         iconSize: [87, 50]
     }),
     "christmasTrainIcon": L.icon({
-        iconUrl: 'http://localhost/christmas/assets/map-christmas-train-short.svg',
+        iconUrl: 'https://felixinx.github.io/mtl-gtfs-rt/assets/map-christmas-train-short.svg',
         iconSize: [148, 43]
     })
 };
