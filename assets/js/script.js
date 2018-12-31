@@ -139,7 +139,7 @@ $(function () {
 
     function loadTrips() {
         exoTrips = {};
-        var exoTripsUrl = 'http://mtl-gtfs-rt/data/trips/exo-trains.json';
+        var exoTripsUrl = 'https://felixinx.github.io/mtl-gtfs-rt/data/trips/exo-trains.json';
         $.getJSON(exoTripsUrl, function (data) {
             exoTrips = data;
         });
