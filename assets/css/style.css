@@ -1,7 +1,3 @@
-body {
-    font-family: 'Cabin', Arial, sans-serif;
-}
-
 .main-bg {
     position: relative;
     height: fit-content;
@@ -134,19 +130,15 @@ body {
     width: 100%;
     color: white;
     background-color: #ED213A;
-    border: 10px solid;
-    border-radius: 0;
-    border-color: #ED213A;
+    border: 0;
 }
 
 .main-bg .alert-success {
     width: fit-content;
     margin-left: 20px;
     color: white;
-    background-color: #155724;
-    border: 10px solid;
-    border-radius: 0;
-    border-color: #155724;
+    background-color: rgba(21, 87, 36, 0.75);
+    border: 0;
     margin-top: 50px;
 }
 
@@ -183,33 +175,6 @@ body {
 
 #data-timestamp {
     margin-top: 10px;
-}
-
-.footer {
-    margin-top: 15px;
-    background: #5B86E5;
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
-}
-
-.footer .container {
-    background: #5B86E5;
-}
-
-@media (max-width: 992px) {
-    .footer .container {
-        background: #5B86E5;
-    }
-
-    .footer {
-        line-height: inherit;
-    }
-}
-
-.footer a {
-    color: white;
 }
 
 .main-azure {
@@ -265,8 +230,7 @@ body {
 .alert-timestamp {
     color: white;
     background-color: #0c5460;
-    border-color: #0c5460;
-    border-radius: 0;
+    border: 0;
     margin-top: 15px;
 }
 
@@ -278,4 +242,46 @@ body {
     position: absolute;
     right: 1rem;
     bottom: 1rem;
+}
+
+@media (max-width: 576px) {
+    .credits {
+        top: 1rem;
+    }
+}
+
+.tabulator-header-filter input {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.alert-success .alert-link {
+    color: white;
+}
+
+.footer-section1 {
+    padding: 10px 0px;
+    background-color: #6874E8;
+}
+
+.footer-section2 {
+    line-height: 2em;
+    padding: 10px 0px;
+    background-color: #33658A;
+    color: white;
+}
+
+.footer-section2 a {
+    color: white;
+    font-weight: bold;
 }

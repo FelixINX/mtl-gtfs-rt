@@ -15,6 +15,8 @@ var transitLayer = L.layerGroup().addTo(mtl_gtfsrt_map);
 // when page is loaded
 
 $(function () {
+    console.log('Loading MTL-TRANSIT-TRACKER version 1.2.1...');
+
     loadTransit("stm1" , "#00a54f");
     loadTransit("stm2" , "#f58220");
     loadTransit("stm4" , "#ffdc01");
@@ -26,9 +28,14 @@ $(function () {
     loadTransit("exo5" , "#cf5a94");
     loadTransit("exo6" , "#f2a69a");
 
+    loadTrips();
+
     loadData(dataUrl);
 
     loadRandomImage(images);
+
+    mtl_gtfsrt_map.on('locationfound', onLocationFound);
+    mtl_gtfsrt_map.locate({setView: true, maxZoom: 14});
 
     // when the page has finish loading, show the map
     $('.loading').css('display', 'none');
@@ -47,49 +54,28 @@ $(function () {
     }
 
     function loadData(data_source){
-        $.get(data_source, function (data, pos_status) {
+        var loadDataRequest = $.get(data_source);
+
+        // proceed if the request is success
+        loadDataRequest.done(function (data) {
             // display vehicles on the map
             data.results.forEach(function (element) {
+                var trip_info = $.grep(exoTrips, function(obj){return obj.trip_id === element.trip_id}, false)[0];
                 L.marker(L.latLng(element.lat, element.lon), {
                     icon: icons[element.icon]
                 }).addTo(posLayer)
-                    .bindPopup("<h3>" + element.agency + " " + element.vehicle_id + "</h3><b>Trip: </b> " + element.trip_id + "<br><b>Route: </b>" + element.route_id + "<br><b>Start: </b>" + element.start_date + " " + element.start_time + "<br><b>Current stop sequence: </b>" + element.current_stop_sequence + "<br><b>Status: </b>" + element.current_status);
+                    .bindPopup(popupContent(element, trip_info));
             });
             // load vehicles in the table
             loadTable(data);
-            var dataTable = $('#data-table').DataTable({
-                data: data.results,
-                columns: [
-                    { data: 'agency' },
-                    { data: 'vehicle_id' },
-                    { data: 'route_id' },
-                    { data: 'trip_id' },
-                    { data: 'start_date', defaultContent: 'N/A' },
-                    { data: 'start_time', defaultContent: 'N/A' },
-                    { data: 'current_stop_sequence', defaultContent: 'N/A' },
-                    { data: 'current_status', searchable: false, defaultContent: 'N/A' },
-                    { data: 'lat' },
-                    { data: 'lon' },
-                    { data: null, defaultContent: '<button class="btn btn-primary btn-sm">Show on map</button>', orderable: false, searchable: false }
-                ],
-                dom: 'BSlftipr',
-                buttons: [
-                    'csv', 'excel'
-                ],
-                "columnDefs": [ {
-                    "targets": -1,
-                    "data": null,
-                    "defaultContent": "<button>Click!</button>"
-                } ]
-            });
 
             showTimestamp("STM Bus", data.time_stm);
-            showTimestamp("exo Trains", data.time_exo)
+            showTimestamp("exo Trains", data.time_exo);
+        });
 
-            $('#data-table tbody').on('click', 'button', function () {
-                var data = dataTable.row($(this).parents('tr')).data();
-                showOnMap(data["lat"],data["lon"]);
-            });
+        // stop if the request failed
+        loadDataRequest.fail(function (jqXHR, textStatus) {
+            $('#offlineModal').modal();
         });
     }
 
@@ -116,37 +102,97 @@ $(function () {
     }
 
     function loadTable(requestedData) {
+        var mapIcon = function() {
+            return '<i class="fas fa-map-marked-alt"></i>'
+        }
         var tableData = requestedData.results;
-        var dataTable = new Tabulator('#new-data-table', {
+        var dataTabulator = new Tabulator('#new-data-table', {
+            height: 1074,
             data: tableData,
             layout: 'fitColumns',
             columns: [
-                {title: 'Vehicle number', field: 'vehicle_id'},
-                {title: 'Route', field: 'route_id'},
-                {title: 'Trip', field: 'trip_id'},
+                {title: 'Agency', field: 'agency'},
+                {title: 'Vehicle number', field: 'vehicle_id', headerFilter: 'input'},
+                {title: 'Route', field: 'route_id', headerFilter: 'input'},
+                {title: 'Trip', field: 'trip_id', headerFilter: 'input'},
                 {title: 'Start time', field: 'start_time'},
                 {title: 'Start date', field: 'start_date'},
                 {title: 'Current stop sequence', field: 'current_stop_sequence'},
                 {title: 'Current status', field: 'current_status'},
                 {title: 'Latitude', field: 'lat'},
-                {title: 'Longitude', field: 'lon'}
+                {title: 'Longitude', field: 'lon'},
+                {formatter: mapIcon, width: 50, align: 'center', cellClick: function (e, cell) {
+                    showOnMap(cell.getRow().getData().lat, cell.getRow().getData().lon)
+                }}
             ],
             pagination: 'local',
             paginationSize: 20,
             groupBy: 'agency'
         });
+
+        // download buttons
+        $('#download-csv').click(function () {
+            dataTabulator.download('csv', 'data.csv');
+            ga('send', 'event', 'DownloadButtons', 'DownloadCSV');
+        });
+    }
+
+    function loadTrips() {
+        exoTrips = {};
+        var exoTripsUrl = 'http://mtl-gtfs-rt/data/trips/exo-trains.json';
+        $.getJSON(exoTripsUrl, function (data) {
+            exoTrips = data;
+        });
+    }
+
+    function popupContent(vehicle_info, trip_info) {
+        var content = "<h3>";
+        content += vehicle_info.agency + " ";
+        content += vehicle_info.vehicle_id + "</h3>";
+        content += "<b>Trip: </b>" + vehicle_info.trip_id + "<br>";
+        content += "<b>Route: </b>" + vehicle_info.route_id + "<br>";
+        if (trip_info != null) {
+            content += "<b>Headsign: </b>" + trip_info.trip_headsign + "<br>";
+            content += "<b>Train number: </b>" + trip_info.trip_short_name + "<br>";
+        }
+        if (vehicle_info.start_date != null) {
+            content += "<b>Start: </b>" + vehicle_info.start_date + " " + vehicle_info.start_time + "<br>";
+            content += "<b>Current stop sequence: </b>" + vehicle_info.current_stop_sequence + "<br>";
+            content += "<b>Status: </b>" + vehicle_info.current_status;
+        }
+
+        return content;
+    }
+
+    function onLocationFound(e) {
+        L.marker(e.latlng).addTo(mtl_gtfsrt_map)
+            .bindPopup('You are near here!').openPopup();
     }
 });
+
+// service worker
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').then(function (registration) {
+            console.log('[SW] Registration successful with scope: ', registration.scope);
+        }, function (err) {
+            console.log('[SW] Registration failed: ', err);
+        });
+    });
+}
 
 // global variables
 
 var icons = {
     "busSTMIcon": L.icon({
-        iconUrl: 'https://felixinx.github.io/mtl-gtfs-rt/assets/map-bus-stm.svg',
+        iconUrl: 'assets/map-bus-stm.svg',
+        // iconUrl: 'https://felixinx.github.io/mtl-gtfs-rt/assets/map-bus-stm.svg',
         iconSize: [20, 20]
     }),
     "trainExoIcon": L.icon({
-        iconUrl: 'https://felixinx.github.io/mtl-gtfs-rt/assets/map-train-exo.svg',
+        iconUrl: ' assets/map-train-exo.svg',
+        // iconUrl: 'https://felixinx.github.io/mtl-gtfs-rt/assets/map-train-exo.svg',
         iconSize: [20, 20]
     })
 };
@@ -155,15 +201,18 @@ var dataUrl = 'https://mtl-gtfs-rt-backend.azurewebsites.net/data/latest.json';
 
 var images = [
     {
-        url: "https://felixinx.github.io/mtl-gtfs-rt/assets/images/joy-real-535919-unsplash-min.jpg",
+        url: "assets/images/joy-real-535919-unsplash-min.jpg",
+        // url: "https://felixinx.github.io/mtl-gtfs-rt/assets/images/joy-real-535919-unsplash-min.jpg",
         credit: "<a style=\"background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px\" href=\"https://unsplash.com/@joyreal328?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Download free do whatever you want high-resolution photos from Joy Real\"><span style=\"display:inline-block;padding:2px 3px\"><svg xmlns=\"http://www.w3.org/2000/svg\" style=\"height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white\" viewBox=\"0 0 32 32\"><title>unsplash-logo</title><path d=\"M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z\"></path></svg></span><span style=\"display:inline-block;padding:2px 3px\">Joy Real</span></a>",
     },
     {
-        url: "https://felixinx.github.io/mtl-gtfs-rt/assets/images/joy-real-587637-unsplash-min.jpg",
+        url: "assets/images/joy-real-587637-unsplash-min.jpg",
+        // url: "https://felixinx.github.io/mtl-gtfs-rt/assets/images/joy-real-587637-unsplash-min.jpg",
         credit: "<a style=\"background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px\" href=\"https://unsplash.com/@joyreal328?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Download free do whatever you want high-resolution photos from Joy Real\"><span style=\"display:inline-block;padding:2px 3px\"><svg xmlns=\"http://www.w3.org/2000/svg\" style=\"height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white\" viewBox=\"0 0 32 32\"><title>unsplash-logo</title><path d=\"M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z\"></path></svg></span><span style=\"display:inline-block;padding:2px 3px\">Joy Real</span></a>",
     },
     {
-        url: "https://felixinx.github.io/mtl-gtfs-rt/assets/images/nicolae-rosu-555257-unsplash-min.jpg",
+        url: "assets/images/nicolae-rosu-555257-unsplash-min.jpg",
+        // url: "https://felixinx.github.io/mtl-gtfs-rt/assets/images/nicolae-rosu-555257-unsplash-min.jpg",
         credit: "<a style=\"background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px\" href=\"https://unsplash.com/@nicolaerosu?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Download free do whatever you want high-resolution photos from Nicolae Rosu\"><span style=\"display:inline-block;padding:2px 3px\"><svg xmlns=\"http://www.w3.org/2000/svg\" style=\"height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white\" viewBox=\"0 0 32 32\"><title>unsplash-logo</title><path d=\"M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z\"></path></svg></span><span style=\"display:inline-block;padding:2px 3px\">Nicolae Rosu</span></a>",
     }
 ];

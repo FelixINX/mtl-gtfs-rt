@@ -1,0 +1,992 @@
+[
+ {
+   "trip_id": "1_10_2",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "10"
+ },
+ {
+   "trip_id": "1_3_2",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "41"
+ },
+ {
+   "trip_id": "1_5_2",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "11"
+ },
+ {
+   "trip_id": "1_6_2",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "40"
+ },
+ {
+   "trip_id": "1_7_2",
+   "trip_headsign": "Direction Hudson",
+   "trip_short_name": "111"
+ },
+ {
+   "trip_id": "1_8_2",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "26"
+ },
+ {
+   "trip_id": "1_9_2",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "13"
+ },
+ {
+   "trip_id": "1_10_4",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "12"
+ },
+ {
+   "trip_id": "1_4_4",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "112"
+ },
+ {
+   "trip_id": "1_9_4",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "15"
+ },
+ {
+   "trip_id": "1_10_6",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "114"
+ },
+ {
+   "trip_id": "1_9_6",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "17"
+ },
+ {
+   "trip_id": "1_10_8",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "14"
+ },
+ {
+   "trip_id": "1_9_8",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "19"
+ },
+ {
+   "trip_id": "1_10_10",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "16"
+ },
+ {
+   "trip_id": "1_9_10",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "121"
+ },
+ {
+   "trip_id": "1_10_12",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "18"
+ },
+ {
+   "trip_id": "1_9_12",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "21"
+ },
+ {
+   "trip_id": "1_10_14",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "20"
+ },
+ {
+   "trip_id": "1_9_14",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "23"
+ },
+ {
+   "trip_id": "1_10_16",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "22"
+ },
+ {
+   "trip_id": "1_9_16",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "25"
+ },
+ {
+   "trip_id": "1_10_18",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "24"
+ },
+ {
+   "trip_id": "1_9_18",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "27"
+ },
+ {
+   "trip_id": "1_10_20",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "30"
+ },
+ {
+   "trip_id": "1_9_20",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "29"
+ },
+ {
+   "trip_id": "1_9_22",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "31"
+ },
+ {
+   "trip_id": "1_10_21",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "50"
+ },
+ {
+   "trip_id": "1_10_22",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "52"
+ },
+ {
+   "trip_id": "1_10_23",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "54"
+ },
+ {
+   "trip_id": "1_9_23",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "51"
+ },
+ {
+   "trip_id": "1_10_24",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "56"
+ },
+ {
+   "trip_id": "1_9_24",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "53"
+ },
+ {
+   "trip_id": "1_9_25",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "55"
+ },
+ {
+   "trip_id": "1_9_26",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "57"
+ },
+ {
+   "trip_id": "1_10_25",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "60"
+ },
+ {
+   "trip_id": "1_10_26",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "62"
+ },
+ {
+   "trip_id": "1_10_27",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "64"
+ },
+ {
+   "trip_id": "1_9_27",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "61"
+ },
+ {
+   "trip_id": "1_9_28",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "63"
+ },
+ {
+   "trip_id": "1_9_29",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "65"
+ },
+ {
+   "trip_id": "2_2_35",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "960"
+ },
+ {
+   "trip_id": "2_2_36",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "962"
+ },
+ {
+   "trip_id": "2_1_37",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "959"
+ },
+ {
+   "trip_id": "2_2_37",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "964"
+ },
+ {
+   "trip_id": "2_1_38",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "961"
+ },
+ {
+   "trip_id": "2_2_38",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "966"
+ },
+ {
+   "trip_id": "2_1_39",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "963"
+ },
+ {
+   "trip_id": "2_1_40",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "965"
+ },
+ {
+   "trip_id": "2_1_41",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "967"
+ },
+ {
+   "trip_id": "2_1_1",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "921"
+ },
+ {
+   "trip_id": "2_2_1",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "920"
+ },
+ {
+   "trip_id": "2_4_1",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "912"
+ },
+ {
+   "trip_id": "2_1_3",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "925"
+ },
+ {
+   "trip_id": "2_2_3",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "922"
+ },
+ {
+   "trip_id": "2_1_5",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "927"
+ },
+ {
+   "trip_id": "2_2_5",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "924"
+ },
+ {
+   "trip_id": "2_1_7",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "929"
+ },
+ {
+   "trip_id": "2_2_7",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "926"
+ },
+ {
+   "trip_id": "2_1_9",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "931"
+ },
+ {
+   "trip_id": "2_2_9",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "928"
+ },
+ {
+   "trip_id": "2_1_11",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "933"
+ },
+ {
+   "trip_id": "2_2_11",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "930"
+ },
+ {
+   "trip_id": "2_1_13",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "935"
+ },
+ {
+   "trip_id": "2_2_13",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "932"
+ },
+ {
+   "trip_id": "2_1_15",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "937"
+ },
+ {
+   "trip_id": "2_2_15",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "934"
+ },
+ {
+   "trip_id": "2_1_17",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "939"
+ },
+ {
+   "trip_id": "2_2_17",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "936"
+ },
+ {
+   "trip_id": "2_1_19",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "941"
+ },
+ {
+   "trip_id": "2_2_19",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "938"
+ },
+ {
+   "trip_id": "2_1_21",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "943"
+ },
+ {
+   "trip_id": "2_2_21",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "940"
+ },
+ {
+   "trip_id": "2_1_23",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "945"
+ },
+ {
+   "trip_id": "2_2_23",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "942"
+ },
+ {
+   "trip_id": "2_1_25",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "947"
+ },
+ {
+   "trip_id": "2_2_25",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "944"
+ },
+ {
+   "trip_id": "2_1_27",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "949"
+ },
+ {
+   "trip_id": "2_2_27",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "946"
+ },
+ {
+   "trip_id": "2_1_29",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "951"
+ },
+ {
+   "trip_id": "2_2_29",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "950"
+ },
+ {
+   "trip_id": "2_1_31",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "953"
+ },
+ {
+   "trip_id": "2_2_31",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "954"
+ },
+ {
+   "trip_id": "2_1_33",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "955"
+ },
+ {
+   "trip_id": "2_2_33",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "956"
+ },
+ {
+   "trip_id": "2_1_35",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "957"
+ },
+ {
+   "trip_id": "3_1_2",
+   "trip_headsign": "Direction Mont-Saint-Hilaire",
+   "trip_short_name": "808"
+ },
+ {
+   "trip_id": "3_2_2",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "801"
+ },
+ {
+   "trip_id": "3_1_4",
+   "trip_headsign": "Direction Mont-Saint-Hilaire",
+   "trip_short_name": "810"
+ },
+ {
+   "trip_id": "3_2_4",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "803"
+ },
+ {
+   "trip_id": "3_1_6",
+   "trip_headsign": "Direction Mont-Saint-Hilaire",
+   "trip_short_name": "812"
+ },
+ {
+   "trip_id": "3_2_6",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "805"
+ },
+ {
+   "trip_id": "3_1_8",
+   "trip_headsign": "Direction Mont-Saint-Hilaire",
+   "trip_short_name": "814"
+ },
+ {
+   "trip_id": "3_2_8",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "807"
+ },
+ {
+   "trip_id": "3_1_10",
+   "trip_headsign": "Direction Mont-Saint-Hilaire",
+   "trip_short_name": "816"
+ },
+ {
+   "trip_id": "3_2_10",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "809"
+ },
+ {
+   "trip_id": "3_1_12",
+   "trip_headsign": "Direction Mont-Saint-Hilaire",
+   "trip_short_name": "818"
+ },
+ {
+   "trip_id": "3_2_12",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "811"
+ },
+ {
+   "trip_id": "3_1_14",
+   "trip_headsign": "Direction Mont-Saint-Hilaire",
+   "trip_short_name": "820"
+ },
+ {
+   "trip_id": "3_2_14",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "813"
+ },
+ {
+   "trip_id": "4_1_2",
+   "trip_headsign": "Direction Saint-Jérôme",
+   "trip_short_name": "171"
+ },
+ {
+   "trip_id": "4_2_2",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "170"
+ },
+ {
+   "trip_id": "4_3_2",
+   "trip_headsign": "Direction Saint-Jérôme",
+   "trip_short_name": "173"
+ },
+ {
+   "trip_id": "4_4_2",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "182"
+ },
+ {
+   "trip_id": "4_1_4",
+   "trip_headsign": "Direction Saint-Jérôme",
+   "trip_short_name": "179"
+ },
+ {
+   "trip_id": "4_2_4",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "172"
+ },
+ {
+   "trip_id": "4_3_4",
+   "trip_headsign": "Direction Saint-Jérôme",
+   "trip_short_name": "175"
+ },
+ {
+   "trip_id": "4_4_4",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "184"
+ },
+ {
+   "trip_id": "4_1_6",
+   "trip_headsign": "Direction Saint-Jérôme",
+   "trip_short_name": "181"
+ },
+ {
+   "trip_id": "4_2_6",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "174"
+ },
+ {
+   "trip_id": "4_3_6",
+   "trip_headsign": "Direction Saint-Jérôme",
+   "trip_short_name": "177"
+ },
+ {
+   "trip_id": "4_4_6",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "186"
+ },
+ {
+   "trip_id": "4_1_8",
+   "trip_headsign": "Direction Saint-Jérôme",
+   "trip_short_name": "183"
+ },
+ {
+   "trip_id": "4_2_8",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "176"
+ },
+ {
+   "trip_id": "4_1_10",
+   "trip_headsign": "Direction Saint-Jérôme",
+   "trip_short_name": "185"
+ },
+ {
+   "trip_id": "4_2_10",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "178"
+ },
+ {
+   "trip_id": "4_1_12",
+   "trip_headsign": "Direction Saint-Jérôme",
+   "trip_short_name": "187"
+ },
+ {
+   "trip_id": "4_2_12",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "180"
+ },
+ {
+   "trip_id": "4_1_14",
+   "trip_headsign": "Direction Saint-Jérôme",
+   "trip_short_name": "189"
+ },
+ {
+   "trip_id": "4_2_14",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "188"
+ },
+ {
+   "trip_id": "4_1_16",
+   "trip_headsign": "Direction Saint-Jérôme",
+   "trip_short_name": "191"
+ },
+ {
+   "trip_id": "4_2_16",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "190"
+ },
+ {
+   "trip_id": "4_1_18",
+   "trip_headsign": "Direction Saint-Jérôme",
+   "trip_short_name": "193"
+ },
+ {
+   "trip_id": "4_2_18",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "192"
+ },
+ {
+   "trip_id": "4_1_20",
+   "trip_headsign": "Direction Saint-Jérôme",
+   "trip_short_name": "195"
+ },
+ {
+   "trip_id": "4_2_20",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "194"
+ },
+ {
+   "trip_id": "4_5_1",
+   "trip_headsign": "Direction Saint-Jérôme",
+   "trip_short_name": "201"
+ },
+ {
+   "trip_id": "4_6_1",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "200"
+ },
+ {
+   "trip_id": "4_5_2",
+   "trip_headsign": "Direction Saint-Jérôme",
+   "trip_short_name": "203"
+ },
+ {
+   "trip_id": "4_6_2",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "202"
+ },
+ {
+   "trip_id": "4_5_3",
+   "trip_headsign": "Direction Saint-Jérôme",
+   "trip_short_name": "205"
+ },
+ {
+   "trip_id": "4_6_3",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "204"
+ },
+ {
+   "trip_id": "4_5_4",
+   "trip_headsign": "Direction Saint-Jérôme",
+   "trip_short_name": "207"
+ },
+ {
+   "trip_id": "4_6_4",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "206"
+ },
+ {
+   "trip_id": "4_5_5",
+   "trip_headsign": "Direction Saint-Jérôme",
+   "trip_short_name": "209"
+ },
+ {
+   "trip_id": "4_6_5",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "208"
+ },
+ {
+   "trip_id": "4_5_6",
+   "trip_headsign": "Direction Saint-Jérôme",
+   "trip_short_name": "211"
+ },
+ {
+   "trip_id": "4_6_6",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "210"
+ },
+ {
+   "trip_id": "5_1_2",
+   "trip_headsign": "Direction Candiac",
+   "trip_short_name": "77"
+ },
+ {
+   "trip_id": "5_2_2",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "70"
+ },
+ {
+   "trip_id": "5_1_4",
+   "trip_headsign": "Direction Candiac",
+   "trip_short_name": "79"
+ },
+ {
+   "trip_id": "5_2_4",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "72"
+ },
+ {
+   "trip_id": "5_1_6",
+   "trip_headsign": "Direction Candiac",
+   "trip_short_name": "81"
+ },
+ {
+   "trip_id": "5_2_6",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "74"
+ },
+ {
+   "trip_id": "5_1_8",
+   "trip_headsign": "Direction Candiac",
+   "trip_short_name": "83"
+ },
+ {
+   "trip_id": "5_2_8",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "76"
+ },
+ {
+   "trip_id": "5_1_10",
+   "trip_headsign": "Direction Candiac",
+   "trip_short_name": "85"
+ },
+ {
+   "trip_id": "5_2_10",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "78"
+ },
+ {
+   "trip_id": "5_1_12",
+   "trip_headsign": "Direction Candiac",
+   "trip_short_name": "87"
+ },
+ {
+   "trip_id": "5_2_12",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "80"
+ },
+ {
+   "trip_id": "5_1_14",
+   "trip_headsign": "Direction Candiac",
+   "trip_short_name": "89"
+ },
+ {
+   "trip_id": "5_2_14",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "82"
+ },
+ {
+   "trip_id": "5_1_16",
+   "trip_headsign": "Direction Candiac",
+   "trip_short_name": "91"
+ },
+ {
+   "trip_id": "5_2_16",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "84"
+ },
+ {
+   "trip_id": "5_1_18",
+   "trip_headsign": "Direction Candiac",
+   "trip_short_name": "93"
+ },
+ {
+   "trip_id": "5_2_18",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "86"
+ },
+ {
+   "trip_id": "6_1_15",
+   "trip_headsign": "Direction Mascouche",
+   "trip_short_name": "1215"
+ },
+ {
+   "trip_id": "6_2_15",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "1214"
+ },
+ {
+   "trip_id": "6_1_2",
+   "trip_headsign": "Direction Mascouche",
+   "trip_short_name": "1201"
+ },
+ {
+   "trip_id": "6_2_2",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "1200"
+ },
+ {
+   "trip_id": "6_1_4",
+   "trip_headsign": "Direction Mascouche",
+   "trip_short_name": "1203"
+ },
+ {
+   "trip_id": "6_2_4",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "1202"
+ },
+ {
+   "trip_id": "6_1_6",
+   "trip_headsign": "Direction Mascouche",
+   "trip_short_name": "1205"
+ },
+ {
+   "trip_id": "6_2_6",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "1204"
+ },
+ {
+   "trip_id": "6_1_8",
+   "trip_headsign": "Direction Mascouche",
+   "trip_short_name": "1207"
+ },
+ {
+   "trip_id": "6_2_8",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "1206"
+ },
+ {
+   "trip_id": "6_1_10",
+   "trip_headsign": "Direction Mascouche",
+   "trip_short_name": "1209"
+ },
+ {
+   "trip_id": "6_2_10",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "1208"
+ },
+ {
+   "trip_id": "6_1_12",
+   "trip_headsign": "Direction Mascouche",
+   "trip_short_name": "1211"
+ },
+ {
+   "trip_id": "6_2_12",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "1210"
+ },
+ {
+   "trip_id": "6_1_14",
+   "trip_headsign": "Direction Mascouche",
+   "trip_short_name": "1213"
+ },
+ {
+   "trip_id": "6_2_14",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "1212"
+ },
+ {
+   "trip_id": "1_1_1",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "EXT1"
+ },
+ {
+   "trip_id": "1_11_1",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "EXT13"
+ },
+ {
+   "trip_id": "1_2_1",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "EXT2"
+ },
+ {
+   "trip_id": "1_1_2",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "EXT3"
+ },
+ {
+   "trip_id": "1_2_2",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "EXT4"
+ },
+ {
+   "trip_id": "1_1_3",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "EXT5"
+ },
+ {
+   "trip_id": "1_2_3",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "EXT6"
+ },
+ {
+   "trip_id": "1_1_4",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "EXT7"
+ },
+ {
+   "trip_id": "1_2_4",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "EXT8"
+ },
+ {
+   "trip_id": "1_1_5",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "EXT9"
+ },
+ {
+   "trip_id": "1_2_5",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "EXT10"
+ },
+ {
+   "trip_id": "1_1_6",
+   "trip_headsign": "Direction Vaudreuil",
+   "trip_short_name": "EXT11"
+ },
+ {
+   "trip_id": "1_2_6",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "EXT12"
+ },
+ {
+   "trip_id": "1_2_7",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "EXT14"
+ },
+ {
+   "trip_id": "2_1_60",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "1001"
+ },
+ {
+   "trip_id": "2_2_60",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "1000"
+ },
+ {
+   "trip_id": "2_1_61",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "1003"
+ },
+ {
+   "trip_id": "2_2_61",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "1002"
+ },
+ {
+   "trip_id": "2_1_62",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "1005"
+ },
+ {
+   "trip_id": "2_2_62",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "1004"
+ },
+ {
+   "trip_id": "2_1_63",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "1007"
+ },
+ {
+   "trip_id": "2_2_63",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "1006"
+ },
+ {
+   "trip_id": "2_1_64",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "1009"
+ },
+ {
+   "trip_id": "2_2_64",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "1008"
+ },
+ {
+   "trip_id": "2_1_65",
+   "trip_headsign": "Direction Deux-Montagnes",
+   "trip_short_name": "1011"
+ },
+ {
+   "trip_id": "2_2_65",
+   "trip_headsign": "Direction Montréal",
+   "trip_short_name": "1010"
+ }
+]
