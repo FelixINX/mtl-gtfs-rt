@@ -3,11 +3,21 @@ body {
 }
 
 .main-bg {
+    position: relative;
     height: fit-content;
     width: 100%;
-    background: #36D1DC;
-    background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);
-    background: linear-gradient(to right, #5B86E5, #36D1DC);
+}
+
+.main-bg:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(201, 214, 255, 0.6);
+    background: -webkit-linear-gradient(to right,rgba(201, 214, 255, 0.75),rgba(226, 226, 226, 0.25));
+    background: linear-gradient(to right,rgba(201, 214, 255, 0.75),rgba(226, 226, 226, 0.25));
 }
 
 .art-lines {
@@ -113,21 +123,20 @@ body {
 .main-text {
     padding-top: 175px;
     margin-left: 20px;
+    position: relative;
 }
 
 .main-text h1 {
     font-weight: bold;
 }
 
-.main-bg .alert-danger {
-    width: fit-content;
-    margin-left: 20px;
+.alert-data {
+    width: 100%;
     color: white;
     background-color: #ED213A;
     border: 10px solid;
     border-radius: 0;
     border-color: #ED213A;
-    margin-top: 50px;
 }
 
 .main-bg .alert-success {
@@ -159,6 +168,7 @@ body {
 .main-choose {
     margin-left: 20px;
     margin-top: 50px;
+    position: relative;
 }
 
 .btn-choices {
@@ -262,4 +272,10 @@ body {
 
 .alert-timestamp .fas {
     margin-right: 20px;
+}
+
+.credits {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
 }
