@@ -107,26 +107,26 @@ $(function () {
         }
         var tableData = requestedData.results;
         var dataTabulator = new Tabulator('#new-data-table', {
-            height: 1074,
+            height: 5030,
             data: tableData,
             layout: 'fitColumns',
             columns: [
-                {title: 'Agency', field: 'agency'},
-                {title: 'Vehicle number', field: 'vehicle_id', headerFilter: 'input'},
-                {title: 'Route', field: 'route_id', headerFilter: 'input'},
-                {title: 'Trip', field: 'trip_id', headerFilter: 'input'},
-                {title: 'Start time', field: 'start_time'},
-                {title: 'Start date', field: 'start_date'},
-                {title: 'Current stop sequence', field: 'current_stop_sequence'},
-                {title: 'Current status', field: 'current_status'},
-                {title: 'Latitude', field: 'lat'},
-                {title: 'Longitude', field: 'lon'},
-                {formatter: mapIcon, width: 50, align: 'center', cellClick: function (e, cell) {
+                {title: 'Agency', field: 'agency', width: 60},
+                {title: 'Vehicle number', field: 'vehicle_id', headerFilter: 'input', width: 100},
+                {title: 'Route', field: 'route_id', headerFilter: 'input', width: 60},
+                {title: 'Trip', field: 'trip_id', headerFilter: 'input', width: 110},
+                {title: 'Start time', field: 'start_time', width: 85},
+                {title: 'Start date', field: 'start_date', width: 95},
+                {title: 'Current stop sequence', field: 'current_stop_sequence', width: 45, widthGrow: 2},
+                {title: 'Current status', field: 'current_status', width: 140, widthGrow: 2},
+                {title: 'Latitude', field: 'lat', width: 90},
+                {title: 'Longitude', field: 'lon', width: 100},
+                {formatter: mapIcon, width: 50, widthGrow: 1, align: 'center', cellClick: function (e, cell) {
                     showOnMap(cell.getRow().getData().lat, cell.getRow().getData().lon)
                 }}
             ],
             pagination: 'local',
-            paginationSize: 20,
+            paginationSize: 100,
             groupBy: 'agency'
         });
 

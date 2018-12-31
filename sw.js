@@ -1,4 +1,4 @@
-var cacheName = 'mtl-transit-tracker-v1.2.1';
+var cacheName = 'mtl-transit-tracker-v1.2.2';
 var filesToCache = [
     '.',
     'index.html',
