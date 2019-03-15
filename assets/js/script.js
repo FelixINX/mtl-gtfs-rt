@@ -15,7 +15,7 @@ var transitLayer = L.layerGroup().addTo(mtl_gtfsrt_map);
 // when page is loaded
 
 $(function () {
-    console.log('Loading MTL-TRANSIT-TRACKER version 1.2.1...');
+    console.log('Loading MTL-TRANSIT-TRACKER version 1.2.3...');
 
     loadTransit("stm1" , "#00a54f");
     loadTransit("stm2" , "#f58220");
@@ -49,6 +49,8 @@ $(function () {
     function showTimestamp(agency_name, timestamp) {
         var date = new Date(null);
         date.setSeconds(timestamp);
+        // fix for summer tim
+        date.setHours(date.getHours()+1);
         var timeString = date.toLocaleTimeString();
         $('.ul-timestamp').append('<li>' + agency_name + ' - ' + timeString + '</li>');
     }
@@ -187,12 +189,10 @@ if ('serviceWorker' in navigator) {
 var icons = {
     "busSTMIcon": L.icon({
         iconUrl: 'assets/map-bus-stm.svg',
-        // iconUrl: 'https://felixinx.github.io/mtl-gtfs-rt/assets/map-bus-stm.svg',
         iconSize: [20, 20]
     }),
     "trainExoIcon": L.icon({
         iconUrl: ' assets/map-train-exo.svg',
-        // iconUrl: 'https://felixinx.github.io/mtl-gtfs-rt/assets/map-train-exo.svg',
         iconSize: [20, 20]
     })
 };
@@ -201,18 +201,11 @@ var dataUrl = 'https://mtl-gtfs-rt-backend.azurewebsites.net/data/latest.json';
 
 var images = [
     {
-        url: "assets/images/joy-real-535919-unsplash-min.jpg",
-        // url: "https://felixinx.github.io/mtl-gtfs-rt/assets/images/joy-real-535919-unsplash-min.jpg",
-        credit: "<a style=\"background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px\" href=\"https://unsplash.com/@joyreal328?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Download free do whatever you want high-resolution photos from Joy Real\"><span style=\"display:inline-block;padding:2px 3px\"><svg xmlns=\"http://www.w3.org/2000/svg\" style=\"height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white\" viewBox=\"0 0 32 32\"><title>unsplash-logo</title><path d=\"M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z\"></path></svg></span><span style=\"display:inline-block;padding:2px 3px\">Joy Real</span></a>",
+        url: "assets/images/wikimedia-30871-min.jpg",
+        credit: "<div>Wikimedia Commons - Alexcaban</div>",
     },
     {
-        url: "assets/images/joy-real-587637-unsplash-min.jpg",
-        // url: "https://felixinx.github.io/mtl-gtfs-rt/assets/images/joy-real-587637-unsplash-min.jpg",
-        credit: "<a style=\"background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px\" href=\"https://unsplash.com/@joyreal328?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Download free do whatever you want high-resolution photos from Joy Real\"><span style=\"display:inline-block;padding:2px 3px\"><svg xmlns=\"http://www.w3.org/2000/svg\" style=\"height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white\" viewBox=\"0 0 32 32\"><title>unsplash-logo</title><path d=\"M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z\"></path></svg></span><span style=\"display:inline-block;padding:2px 3px\">Joy Real</span></a>",
-    },
-    {
-        url: "assets/images/nicolae-rosu-555257-unsplash-min.jpg",
-        // url: "https://felixinx.github.io/mtl-gtfs-rt/assets/images/nicolae-rosu-555257-unsplash-min.jpg",
-        credit: "<a style=\"background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px\" href=\"https://unsplash.com/@nicolaerosu?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Download free do whatever you want high-resolution photos from Nicolae Rosu\"><span style=\"display:inline-block;padding:2px 3px\"><svg xmlns=\"http://www.w3.org/2000/svg\" style=\"height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white\" viewBox=\"0 0 32 32\"><title>unsplash-logo</title><path d=\"M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z\"></path></svg></span><span style=\"display:inline-block;padding:2px 3px\">Nicolae Rosu</span></a>",
+        url: "assets/images/wikimedia-amt1356-min.jpg",
+        credit: "<div>Wikimedia Commons - Mtlfiredude</div>",
     }
 ];
