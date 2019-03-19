@@ -1,7 +1,5 @@
-var cacheName = 'mtl-transit-tracker-v1.2.3';
+var cacheName = 'mtl-transit-tracker-v1.2.4';
 var filesToCache = [
-    '.',
-    'index.html',
     'assets/js/bootstrap.bundle.min.js',
     'assets/js/jquery-3.3.1.min.js',
     'assets/js/leaflet.min.js',
@@ -19,9 +17,8 @@ var filesToCache = [
     'assets/webfonts/fa-solid-900.woff2',
     'assets/map-bus-stm.svg',
     'assets/map-train-exo.svg',
-    'assets/images/joy-real-535919-unsplash-min.jpg',
-    'assets/images/joy-real-587637-unsplash-min.jpg',
-    'assets/images/nicolae-rosu-555257-unsplash-min.jpg'
+    'assets/images/wikimedia-30871-min.jpg',
+    'assets/images/wikimedia-amt1356-min.jpg'
 ];
 
 self.addEventListener('install', function (e) {

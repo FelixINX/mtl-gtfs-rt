@@ -202,10 +202,10 @@ var dataUrl = 'https://mtl-gtfs-rt-backend.azurewebsites.net/data/latest.json';
 var images = [
     {
         url: "assets/images/wikimedia-30871-min.jpg",
-        credit: "<div>Wikimedia Commons - Alexcaban</div>",
+        credit: "<p>Image from Wikimedia Commons by Alexcaban</p>",
     },
     {
         url: "assets/images/wikimedia-amt1356-min.jpg",
-        credit: "<div>Wikimedia Commons - Mtlfiredude</div>",
+        credit: "<p>Image from Wikimedia Commons by Mtlfiredude</p>",
     }
 ];

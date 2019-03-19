@@ -238,18 +238,6 @@
     margin-right: 20px;
 }
 
-.credits {
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
-}
-
-@media (max-width: 576px) {
-    .credits {
-        top: 1rem;
-    }
-}
-
 .tabulator-header-filter input {
     display: block;
     width: 100%;
