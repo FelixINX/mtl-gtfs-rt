@@ -15,7 +15,7 @@ var transitLayer = L.layerGroup().addTo(mtl_gtfsrt_map);
 // when page is loaded
 
 $(function () {
-    console.log('Loading MTL-TRANSIT-TRACKER version 1.2.3...');
+    console.log('Loading MTL-TRANSIT-TRACKER version 1.2.5...');
 
     loadTransit("stm1" , "#00a54f");
     loadTransit("stm2" , "#f58220");
@@ -141,7 +141,6 @@ $(function () {
 
     function loadTrips() {
         exoTrips = {};
-        var exoTripsUrl = 'https://felixinx.github.io/mtl-gtfs-rt/data/trips/exo-trains.json';
         $.getJSON(exoTripsUrl, function (data) {
             exoTrips = data;
         });
@@ -190,8 +189,8 @@ var icons = {
         iconSize: [20, 20]
     })
 };
-
-var dataUrl = 'https://mtl-gtfs-rt-backend.azurewebsites.net/data/latest.json';
+var timestampString = + new Date();
+var dataUrl = 'https://mtl-gtfs-rt-backend.azurewebsites.net/data/latest.json?time=' + timestampString;
 
 var images = [
     {
