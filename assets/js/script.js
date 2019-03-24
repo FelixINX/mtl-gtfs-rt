@@ -175,13 +175,7 @@ $(function () {
 // service worker
 
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-        navigator.serviceWorker.register('sw.js').then(function (registration) {
-            console.log('[SW] Registration successful with scope: ', registration.scope);
-        }, function (err) {
-            console.log('[SW] Registration failed: ', err);
-        });
-    });
+    // delete all cache first
 }
 
 // global variables
