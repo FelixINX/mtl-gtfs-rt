@@ -141,6 +141,7 @@ $(function () {
 
     function loadTrips() {
         exoTrips = {};
+        var exoTripsUrl = 'https://felixinx.github.io/mtl-gtfs-rt/data/trips/exo-trains.json';
         $.getJSON(exoTripsUrl, function (data) {
             exoTrips = data;
         });
