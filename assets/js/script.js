@@ -15,7 +15,7 @@ var transitLayer = L.layerGroup().addTo(mtl_gtfsrt_map);
 // when page is loaded
 
 $(function () {
-    console.log('Loading MTL-TRANSIT-TRACKER version 1.2.5...');
+    console.log('Loading MTL-TRANSIT-TRACKER version 1.2.6...');
 
     loadTransit("stm1" , "#00a54f");
     loadTransit("stm2" , "#f58220");
@@ -191,7 +191,7 @@ var icons = {
     })
 };
 var timestampString = + new Date();
-var dataUrl = 'https://mtl-gtfs-rt-backend.azurewebsites.net/data/latest.json?time=' + timestampString;
+var dataUrl = 'https://v1.transittracker.ca/data/latest.json?time=' + timestampString;
 
 var images = [
     {
