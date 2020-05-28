@@ -25,21 +25,15 @@
         <h1>Welcome to the Montreal real time transit viewer!</h1>
         <h3>Here you can see a part of our transit system in real time.</h3>
     </div>
-    <div class="alert alert-success">
-        <div class="row">
-            <div class="col-12">
-                <h5>Latest news</h5>
-                <b>v1.2.5</b> Changelog :
-                <ul>
-                    <li>For technical reasons, service workers have been removed. The cached assets will be deleted. Expect a longer loading time.</li>
-                    <li>I was informed of a problem displaying the list on the Firefox browser. For now, the only way to fix the problem is to resize your window.</li>
-                </ul>
-                <hr>
-                <b>Version 2 is coming!</b><br>
-                This release will introduce a new interface, automatic refresh every minute, bus destination, STL buses and a new name!<br>
-                Thank you for using Montreal Realtime Transit Viewer!
-            </div>
-        </div>
+    <div class="alert alert-primary switch-alert col-container">
+        <h5>Switch to Transit Tracker version 2!</h5>
+        <p>The second version of this application is now avaible under a new name and a new domain : </p>
+        <a href="https://transittracker.ca/?pk_campaign=switch-to-v2&pk_kwd=alert" target="_blank" class="btn btn-switch mb-3">
+            <i class="fas fa-external-link-square-alt"></i>
+            transittracker.ca
+        </a><br>
+        <b>If you prefer version 1, don't worry, it will stay.</b>
+        <p>However, there will be no new updates for this version. This means that if something breaks, it will not be repaired.</p>
     </div>
     <div class="main-choose">
         <h3>Please choose how you wish to see the data</h3>
@@ -90,11 +84,6 @@
                 <li>Talk with me on <a href="https://cptdb.ca/topic/19090-montreal-realtime-transit-viewer/">CPTDB</a>
                 </li>
             </ul>
-            <hr>
-            Please note : for <b>STM data</b>, the Trip field corresponds to the <code>trip_id</code> in the <code>trips.txt</code>
-            file of the <u>static GTFS for <b>realtime</b></u>. I know it's quite confusing! <a
-                href="http://www.stm.info/sites/default/files/gtfs/GTFS_20181029_rt.zip">Download
-            the data here.</a>
         </div>
         <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
             <span class="credits"></span>
@@ -135,6 +124,61 @@
             </div>
         </div>
     </div>
+    <!-- Transit Tracker modal -->
+    <div class="modal fade" id="v2Modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="v2ModalCloseX">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body pb-0">
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 text-center">
+                            <svg data-v-396b42e3="" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" viewBox="0 0 295.012 403.72198" width="100%" height="100%" version="1.1" id="svg2980" sodipodi:docname="logo.svg" inkscape:version="0.92.4 (5da689c313, 2019-01-14)" class="logo" style="isolation: isolate;"><metadata data-v-396b42e3="" id="metadata2986"><rdf:rdf data-v-396b42e3=""><cc:work data-v-396b42e3="" rdf:about=""><dc:format data-v-396b42e3="">image/svg+xml</dc:format> <dc:type data-v-396b42e3="" rdf:resource="http://purl.org/dc/dcmitype/StillImage"></dc:type> <dc:title data-v-396b42e3=""></dc:title></cc:work></rdf:rdf></metadata> <defs data-v-396b42e3="" id="defs2984"></defs> <sodipodi:namedview data-v-396b42e3="" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="1920" inkscape:window-height="1044" id="namedview2982" showgrid="false" inkscape:zoom="1.251579" inkscape:cx="282.07076" inkscape:cy="277.73596" inkscape:window-x="1920" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="svg2980" fit-margin-top="0" fit-margin-left="0" fit-margin-right="0" fit-margin-bottom="0"></sodipodi:namedview> <g data-v-396b42e3="" id="g2978" transform="translate(1.875,1.875)"><g data-v-396b42e3="" id="g2972"><path data-v-396b42e3="" d="M 291.262,145.631 C 291.262,65.291 225.971,0 145.631,0 65.291,0 0,65.291 0,145.631 c 0,84.709 87.864,198.786 126.942,245.631 9.708,11.651 27.427,11.651 37.136,0 39.32,-46.845 127.184,-160.922 127.184,-245.631 z" id="path2970" inkscape:connector-curvature="0" class="svg-elem-1" style="stroke: rgb(35, 116, 171); stroke-width: 3.75; stroke-miterlimit: 4; stroke-opacity: 1; paint-order: normal;"></path></g> <g data-v-396b42e3="" id="g2976" style="fill: rgb(255, 255, 255); fill-opacity: 1;"><path data-v-396b42e3="" d="m 82.473,181.157 c 0,6.948 3.079,13.185 7.895,17.527 v 10.105 c 0,6.553 5.289,11.842 11.842,11.842 6.553,0 11.842,-5.289 11.842,-11.842 v -3.947 h 63.158 v 3.947 c 0,6.474 5.289,11.842 11.842,11.842 6.474,0 11.842,-5.289 11.842,-11.842 v -10.105 c 4.816,-4.342 7.895,-10.579 7.895,-17.527 V 102.21 c 0,-27.632 -28.263,-31.579 -63.158,-31.579 -34.895,0 -63.158,3.947 -63.158,31.579 z m 27.632,7.895 c -6.553,0 -11.842,-5.289 -11.842,-11.842 0,-6.553 5.289,-11.842 11.842,-11.842 6.552,0 11.842,5.289 11.842,11.842 0,6.553 -5.29,11.842 -11.842,11.842 z m 71.052,0 c -6.552,0 -11.842,-5.289 -11.842,-11.842 0,-6.553 5.29,-11.842 11.842,-11.842 6.553,0 11.842,5.289 11.842,11.842 0,6.553 -5.289,11.842 -11.842,11.842 z m 11.842,-47.368 H 98.263 V 102.21 h 94.736 z" id="path2974" inkscape:connector-curvature="0" class="svg-elem-2" style="fill: rgb(255, 255, 255); fill-opacity: 1;"></path></g></g></svg>
+                        </div>
+                        <div class="col-8">
+                            <h3>Transit Tracker version 2 is here!</h3><br>
+                            <h5>A new name, a new interface, and a new home for the second version of Montreal Real Time Transit Viewer : <a href="https://transittracker.ca/?pk_campaign=switch-to-v2&pk_kwd=modal" target="_blank">transittracker.ca</a></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-center">
+                            <i class="fad fa-map-signs fa-3x theme-tt2"></i><br>
+                            <b>Expand your horizons</b><br>
+                            <small>With more than 20 agencies in Montreal and Toronto, you can finally leave the island</small>
+                        </div>
+                        <div class="col-4 text-center">
+                            <i class="fad fa-route fa-3x theme-tt2"></i><br>
+                            <b>Know where they're going</b><br>
+                            <small>For almost all vehicles, detailed trips information is available, like headsign!</small>
+                        </div>
+                        <div class="col-4 text-center">
+                            <i class="fad fa-eclipse fa-3x theme-tt2"></i><br>
+                            <b>For fans of dark mode</b><br>
+                            <small>See thousands of vehicles without damaging your eyes</small>
+                        </div>
+                    </div>
+                    <div class="row text-center mt-4">
+                        <div class="col-md-4">
+                            <img src="/assets/images/preview-1.png" alt="Home tab" class="preview-tt2">
+                        </div>
+                        <div class="col-md-4 d-none d-md-block">
+                            <img src="/assets/images/preview-2.png" alt="Table tab" class="preview-tt2">
+                        </div>
+                        <div class="col-md-4 d-none d-md-block">
+                            <img src="/assets/images/preview-3.png" alt="Map tab" class="preview-tt2">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal" id="v2ModalCloseBtn">No thanks</button>
+                    <a href="https://transittracker.ca/?pk_campaign=switch-to-v2&pk_kwd=modal" class="btn btn-primary" target="_blank">Try it now!</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <footer class="footer">
     <div class="footer-section1">
@@ -145,23 +189,26 @@
     <div class="footer-section2">
         <div class="container">
             Made by <a href="https://github.com/felixinx">FelixINX</a>
-            <a href="https://github.com/felixinx/mtl-gtfs-rt" class="footer-icons float-right"><i class="fab fa-github fa-2x"></i></a>
+            <a href="https://github.com/felixinx/mtl-gtfs-rt" class="footer-icons float-right"><i class="fab fa-github fa-2x ml-2"></i></a>
+            <a href="https://twitter.com/ttransitca" class="footer-icons float-right"><i class="fab fa-twitter fa-2x ml-2"></i></a>
         </div>
     </div>
 </footer>
-<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/leaflet.css">
-<link rel="stylesheet" href="assets/css/tabulator.min.css">
-<link rel="stylesheet" href="assets/css/tabulator_bootstrap4.min.css">
-<link rel="stylesheet" href="assets/css/style.min.css">
-<link rel="stylesheet" href="assets/css/fontawesome.min.css">
-<link rel="stylesheet" href="assets/css/fontawesome-solid.min.css">
-<link rel="stylesheet" href="assets/css/fontawesome-brands.min.css">
-<script src="assets/js/leaflet.min.js"></script>
-<script src="assets/js/jquery-3.3.1.min.js"></script>
-<script src="assets/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/tabulator.min.js"></script>
-<script src="assets/js/script.min.js?v=1.2.6"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+<link rel="stylesheet" href="https://unpkg.com/tabulator-tables@4.6.2/dist/css/tabulator.min.css" integrity="sha384-VeOOKA9o88fuDzKyw9fN6KLQqpaiWfjkaO820n8Z7SjtCD1qU3w63ElmtSStPFq5" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/tabulator-tables@4.6.2/dist/css/bootstrap/tabulator_bootstrap4.min.css" integrity="sha384-lK13Br2Nun3mfJ0QYHnHt2GTrkB0x6xlUSrhFTex5esZ+ePH7xKa0KHjseNxIXmv" crossorigin="anonymous">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/solid.css" integrity="sha384-9mSry5MRUHIfL5zghm8hV6FRKJIMfpofq3NWCyo+Kko5c16y0um8WfF5lB2EGIHJ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/duotone.css" integrity="sha384-oRY9z8lvkaf2a1RyLPsz9ba5IbYiz1X/udoO3kZH3WM+gidZ+eELnojAqaBwvAmB" crossorigin="anonymous">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/brands.css" integrity="sha384-YJugi/aYht+lwnwrJEOZp+tAEQ+DxNy2WByHkJcz+0oxlJu8YMSeEwsvZubB8F/E" crossorigin="anonymous">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/fontawesome.css" integrity="sha384-tSxOKkJ+YPQOZg1RZd01upxL2FeeFVkHtkL0+04oWgcm9jnvH+EQNLxhpaNYblG2" crossorigin="anonymous">
+<link rel="stylesheet" href="assets/css/style.min.css?v=1.3.0">
+<link rel="stylesheet" href="assets/css/animation.min.css">
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/tabulator-tables@4.6.2/dist/js/tabulator.min.js" integrity="sha384-/QN9X7Nn2C+iLRCIo5A0QceOZ4iw9haaNtqdqOSTlbFGnKrc6oZnwaw8aulrOo1a" crossorigin="anonymous"></script>
+<script src="assets/js/script.min.js?v=1.3.0"></script>
 
 </body>
 

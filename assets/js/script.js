@@ -15,7 +15,7 @@ var transitLayer = L.layerGroup().addTo(mtl_gtfsrt_map);
 // when page is loaded
 
 $(function () {
-    console.log('Loading MTL-TRANSIT-TRACKER version 1.2.6...');
+    console.log('Loading MTL-TRANSIT-TRACKER version 1.3.0...');
 
     loadTransit("stm1" , "#00a54f");
     loadTransit("stm2" , "#f58220");
@@ -40,6 +40,23 @@ $(function () {
     // when the page has finish loading, show the map
     $('.loading').css('display', 'none');
     $('#leaflet-map').css('opacity', '1');
+
+    // Show v2 dialog
+    if(typeof(Storage) !== 'undefined') {
+        if (!localStorage.getItem('v2ModalDismiss')) {
+            $('#v2Modal').modal('show');
+            $('#v2Modal').on('shown.bs.modal', function (e) {
+                $('.logo').addClass('active');
+            });
+        }
+    }
+
+    // Never show v2 modal if dismissed
+    $('#v2ModalCloseBtn, #v2ModalCloseX').on('click', function (e) {
+        if (typeof(Storage) !== 'undefined') {
+            localStorage.setItem('v2ModalDismiss', true);
+        }
+    });
 
     function showOnMap(lat, lon) {
         mtl_gtfsrt_map.setView([lat, lon], 18);
@@ -77,12 +94,20 @@ $(function () {
 
         // stop if the request failed
         loadDataRequest.fail(function (jqXHR, textStatus) {
-            $('#offlineModal').modal();
+            if(typeof(Storage) !== 'undefined') {
+                if (!localStorage.getItem('v2ModalDismiss')) {
+                    $('#v2Modal').on('hidden.bs.modal', function (e) {
+                        $('#offlineModal').modal();
+                    });
+                } else {
+                    $('#offlineModal').modal();
+                }
+            }
         });
     }
 
     function loadTransit(file, line_color) {
-        $.get("geojson/" + file + ".geojson", function (data) {
+        $.get("geojson/" + file + ".json", function (data) {
             L.geoJSON(data, {
                 style: function () {
                     return {
@@ -171,12 +196,6 @@ $(function () {
             .bindPopup('You are near here!').openPopup();
     }
 });
-
-// service worker
-
-if ('serviceWorker' in navigator) {
-    // delete all cache first
-}
 
 // global variables
 
