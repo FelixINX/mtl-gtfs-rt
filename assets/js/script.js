@@ -1,11 +1,14 @@
 // map preparation
 
 var mtl_gtfsrt_map = L.map('leaflet-map').setView([45.5576, -73.7242], 11.5);
+var map = L.map('map');
 
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>',
+    tileSize: 512,
     maxZoom: 18,
-    id: 'mapbox.streets',
+    zoomOffset: -1,
+    id: 'felixinx/ckbmbifk40jwn1ipdubgvsfy3',
     accessToken: 'pk.eyJ1IjoiZmVsaXhpbngiLCJhIjoiY2lqYzJoMW9vMDA1dnZsa3F3cmZzcWVsciJ9.ZWBQm52vI7RFRwGuoAzwMg'
 }).addTo(mtl_gtfsrt_map);
 
@@ -15,7 +18,7 @@ var transitLayer = L.layerGroup().addTo(mtl_gtfsrt_map);
 // when page is loaded
 
 $(function () {
-    console.log('Loading MTL-TRANSIT-TRACKER version 1.3.0...');
+    console.log('Loading MTL-TRANSIT-TRACKER version 1.3.1...');
 
     loadTransit("stm1" , "#00a54f");
     loadTransit("stm2" , "#f58220");
